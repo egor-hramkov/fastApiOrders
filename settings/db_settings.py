@@ -1,8 +1,12 @@
 import os
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 DB_SETTINGS = {
-    'USER': os.environ.get('db_user', 'postgres'),
-    'PASSWORD': os.environ.get('db_password', 'python'),
-    'HOST': os.environ.get('host', 'localhost'),
-    'NAME': os.environ.get('db_name', 'sqlalchemy_fastapi'),
+    'USER': os.environ.get('db_user'),
+    'PASSWORD': os.environ.get('db_password'),
+    'HOST': os.environ.get('host'),
+    'NAME': os.environ.get('db_name'),
 }
