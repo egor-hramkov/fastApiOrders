@@ -13,7 +13,7 @@ class UserRepository:
     """Репозиторий для работы с пользователем"""
     session = session
 
-    def get_all_users(self):
+    def get_all_users(self) -> list[User]:
         with self.session as db:
             return db.query(User).all()
 

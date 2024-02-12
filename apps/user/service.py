@@ -7,6 +7,9 @@ class UserService:
     """Сервис для работы с пользователем"""
     repository = UserRepository
 
+    async def get_all_users(self) -> list[User]:
+        return self.repository().get_all_users()
+
     async def get_user(self, user_id: int = None, email: str = None, username: str = None) -> User:
         return self.repository().get_user(user_id, email, username)
 

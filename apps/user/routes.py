@@ -1,8 +1,9 @@
 from typing import Any
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 
-from apps.user.schemas import UserCreateModel, UserOutModel, UserUpdateModel
+from apps.auth.oauth2 import OAuth2
+from apps.user.schemas import UserCreateModel, UserOutModel, UserUpdateModel, BaseUser
 from apps.user.service import UserService
 
 router = APIRouter(
@@ -10,6 +11,12 @@ router = APIRouter(
     tags=["user"]
 )
 service = UserService
+
+
+@router.get('/all', response_model=list[UserOutModel])
+async def get_all_users(current_user: BaseUser = Depends(OAuth2().get_current_user)) -> Any:
+    all_users = await service().get_all_users()
+    return all_users
 
 
 @router.post('/register', response_model=UserOutModel)
