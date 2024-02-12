@@ -1,4 +1,5 @@
 from sqlalchemy import create_engine, MetaData
+from sqlalchemy.orm import Session
 
 from settings.db_settings import DB_SETTINGS
 
@@ -9,3 +10,4 @@ db_name = DB_SETTINGS['NAME']
 SQLALCHEMY_DATABASE_URL = f"postgresql://{user}:{password}@{host}/{db_name}"
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 metadata = MetaData()
+session = Session(engine)

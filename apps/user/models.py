@@ -1,16 +1,15 @@
 from sqlalchemy import String
-from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 
-
-class Base(DeclarativeBase):
-    id: Mapped[int] = mapped_column(autoincrement=True, primary_key=True)
+from database.base_models import Base
 
 
 class User(Base):
     __tablename__ = "users"
     email: Mapped[str] = mapped_column(unique=True, index=True)
+    username: Mapped[str] = mapped_column(String(30), unique=True, index=True)
+    password: Mapped[str]
     name: Mapped[str] = mapped_column(String(20))
     surname: Mapped[str] = mapped_column(String(25))
     father_name: Mapped[str] = mapped_column(String(25))
