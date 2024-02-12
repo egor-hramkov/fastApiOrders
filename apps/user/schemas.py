@@ -1,14 +1,25 @@
 from pydantic import BaseModel, EmailStr
 
 
-class UserCreateModel(BaseModel):
-    """Модель для создания пользователя"""
+class BaseUser(BaseModel):
+    """Базовые поля пользователя"""
+    id: int = None
     username: str
     email: EmailStr
     password: str
     name: str
     surname: str
     father_name: str
+
+
+class UserCreateModel(BaseUser):
+    """Модель для создания пользователя"""
+    ...
+
+
+class UserUpdateModel(BaseUser):
+    """Модель для обновления пользователя"""
+    ...
 
 
 class UserOutModel(BaseModel):

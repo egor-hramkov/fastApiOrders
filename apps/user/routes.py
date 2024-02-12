@@ -2,7 +2,7 @@ from typing import Any
 
 from fastapi import APIRouter, HTTPException
 
-from apps.user.schemas import UserCreateModel, UserOutModel
+from apps.user.schemas import UserCreateModel, UserOutModel, UserUpdateModel
 from apps.user.service import UserService
 
 router = APIRouter(
@@ -18,10 +18,23 @@ async def register(user_data: UserCreateModel) -> Any:
     return user
 
 
-@router.get("/{user_id}")
-async def get_user(user_id: int = None, email: str = None, username: str = None):
+@router.get("/{user_id}", response_model=UserOutModel)
+async def get_user(user_id: int) -> Any:
     """Получение информации по пользователю"""
-    user = await service().get_user(user_id, email, username)
+    user = await service().get_user(user_id)
     if not user:
         raise HTTPException(status_code=404, detail='Пользователь с такими данными не найден')
+    return user
+
+
+@router.delete("/{user_id}", response_model=UserOutModel)
+async def delete_user(user_id: int) -> Any:
+    """Удаление пользователя"""
+    user = await service().delete_user(user_id)
+    return user
+
+
+@router.put("/{user_id}", response_model=UserOutModel)
+async def update_user(user_id: int, user_data: UserUpdateModel) -> Any:
+    user = await service().update_user(user_id, user_data)
     return user
