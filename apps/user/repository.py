@@ -1,23 +1,25 @@
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy.orm import Session
 
 from apps.auth.hash_password import HashPassword
 from apps.user import models
 from apps.user.exceptions import UserAlreadyExistsException
 from apps.user.models import User
-from apps.user.schemas import UserCreateModel, UserUpdateModel, BaseUser
+from apps.user.schemas import UserCreateModel, UserUpdateModel
 from apps.user.utils import ExceptionParser
 from database.sql_alchemy import session
 
 
 class UserRepository:
     """Репозиторий для работы с пользователем"""
-    session = session
+    session: Session = session
 
     def get_all_users(self) -> list[User]:
+        """Получение всех пользователей"""
         with self.session as db:
             return db.query(User).all()
 
-    def get_user(self, user_id: int = None, email: str = None, username: str = None) -> User:
+    def get_user(self, user_id: int = None, email: str = None, username: str = None) -> User | None:
         """Получение пользователя"""
         with self.session as db:
             if user_id:
@@ -29,37 +31,36 @@ class UserRepository:
 
     def create_user(self, user_data: UserCreateModel) -> User:
         """Создание пользователя"""
-        with self.session as db:
-            new_user = self.__build_user(user_data)
-            try:
-                db.add(new_user)
-                db.commit()
-                db.refresh(new_user)  # get id to new user
-            except IntegrityError as e:
-                value = ExceptionParser.parse_user_unique_exception(e)
-                raise UserAlreadyExistsException(value)
+        new_user = self.__build_user(user_data)
+        self.__save_user(new_user)
         return new_user
 
     def update_user(self, user_id: int, user: UserUpdateModel):
-        db_user = self.__build_user(user, user_id=user_id)
-        with self.session as db:
-            try:
-                db.add(db_user)
-                db.commit()
-                db.refresh(db_user)  # get id to new user
-            except IntegrityError as e:
-                value = ExceptionParser.parse_user_unique_exception(e)
-                raise UserAlreadyExistsException(value)
-        return db_user
+        """Обновляет пользователя"""
+        updated_user = self.__build_user(user, user_id=user_id)
+        self.__save_user(updated_user)
+        return updated_user
 
     def delete_user(self, user_id: int) -> User:
+        """Удаляет пользователя"""
         with self.session as db:
             db_user = self.get_user(user_id=user_id)
             db.delete(db_user)
             db.commit()
         return db_user
 
+    def __save_user(self, user: User):
+        with self.session as db:
+            try:
+                db.add(user)
+                db.commit()
+                db.refresh(user)  # get id to new instance
+            except IntegrityError as e:
+                value = ExceptionParser.parse_user_unique_exception(e)
+                raise UserAlreadyExistsException(value)
+
     def __build_user(self, user_data: UserCreateModel | UserUpdateModel, user_id: int = None) -> User:
+        """Собирает сущность пользователя"""
         if user_id is None:
             user = models.User()
         else:
