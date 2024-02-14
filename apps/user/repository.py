@@ -35,7 +35,7 @@ class UserRepository:
         self.__save_user(new_user)
         return new_user
 
-    def update_user(self, user_id: int, user: UserUpdateModel):
+    def update_user(self, user_id: int, user: UserUpdateModel) -> User:
         """Обновляет пользователя"""
         updated_user = self.__build_user(user, user_id=user_id)
         self.__save_user(updated_user)
