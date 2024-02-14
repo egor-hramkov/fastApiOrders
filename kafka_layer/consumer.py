@@ -5,14 +5,13 @@ from settings.kafka_settings import KAFKA_TOPIC, KAFKA_BOOTSTRAP_SERVERS, KAFKA_
 
 
 def run_consumer():
-    print(KAFKA_TOPIC, KAFKA_BOOTSTRAP_SERVERS, KAFKA_CONSUMER_GROUP)
+    print(f"Consumer is listening topic={KAFKA_TOPIC}, server={KAFKA_BOOTSTRAP_SERVERS}, group={KAFKA_CONSUMER_GROUP}")
     consumer = KafkaConsumer(
         KAFKA_TOPIC,
         bootstrap_servers=[KAFKA_BOOTSTRAP_SERVERS],
         group_id=KAFKA_CONSUMER_GROUP,
         # value_deserializer=json.load
     )
-    print(f"{consumer.bootstrap_connected()=}")
     for msg in consumer:
         print(msg)
         try:
@@ -23,6 +22,3 @@ def run_consumer():
             # при ребалансе
             print("Зашли в эксепт")
             continue
-
-
-run_consumer()
