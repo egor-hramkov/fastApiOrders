@@ -8,16 +8,21 @@ class UserService:
     repository = UserRepository
 
     async def get_all_users(self) -> list[User]:
-        return self.repository().get_all_users()
+        all_users = await self.repository().get_all_users()
+        return all_users
 
     async def get_user(self, user_id: int = None, email: str = None, username: str = None) -> User:
-        return self.repository().get_user(user_id, email, username)
+        user = await self.repository().get_user(user_id, email, username)
+        return user
 
     async def create_user(self, user_data: UserCreateModel) -> User:
-        return self.repository().create_user(user_data)
+        user = await self.repository().create_user(user_data)
+        return user
 
     async def update_user(self, user_id: int, user_data: UserUpdateModel) -> User:
-        return self.repository().update_user(user_id, user_data)
+        user = await self.repository().update_user(user_id, user_data)
+        return user
 
-    async def delete_user(self, user_id: int) -> User:
-        return self.repository().delete_user(user_id)
+    async def delete_user(self, user_id: int = None, username: str = None) -> User:
+        user = await self.repository().delete_user(user_id, username)
+        return user

@@ -1,9 +1,7 @@
 from typing import Any
 
-from fastapi import APIRouter, HTTPException, Depends
-
-from apps.auth.oauth2 import OAuth2
-from apps.user.schemas import UserCreateModel, UserOutModel, UserUpdateModel, BaseUser
+from fastapi import APIRouter, HTTPException
+from apps.user.schemas import UserCreateModel, UserOutModel, UserUpdateModel
 from apps.user.service import UserService
 
 router = APIRouter(
@@ -14,7 +12,7 @@ service = UserService
 
 
 @router.get('/all', response_model=list[UserOutModel])
-async def get_all_users(current_user: BaseUser = Depends(OAuth2().get_current_user)) -> Any:
+async def get_all_users() -> Any:
     all_users = await service().get_all_users()
     return all_users
 
@@ -35,7 +33,14 @@ async def get_user(user_id: int) -> Any:
 
 
 @router.delete("/{user_id}", response_model=UserOutModel)
-async def delete_user(user_id: int) -> Any:
+async def delete_user(user_id: int, username: str = None) -> Any:
+    """Удаление пользователя"""
+    user = await service().delete_user(user_id, username)
+    return user
+
+
+@router.delete("/{user_id}", response_model=UserOutModel)
+async def delete_user(user_id: int, username: str = None) -> Any:
     """Удаление пользователя"""
     user = await service().delete_user(user_id)
     return user
