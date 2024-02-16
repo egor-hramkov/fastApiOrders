@@ -1,22 +1,11 @@
-from sqlalchemy import String, Enum
+from sqlalchemy import Enum, ForeignKey
 from sqlalchemy.orm import Mapped, relationship
 from sqlalchemy.orm import mapped_column
-from sqlalchemy_utils import ChoiceType
 
+from apps.items.models import Item
 from apps.orders.enums import OrderStatusEnum
 from apps.user.models import User
 from database.base_models import Base
-
-
-class Item(Base):
-    """Модель товара"""
-    __tablename__ = "items"
-
-    name: Mapped[str] = mapped_column(String(100))
-    price: Mapped[int] = mapped_column()
-
-    def __repr__(self) -> str:
-        return f"Item({self.name=}, {self.price=})"
 
 
 class Order(Base):
@@ -24,7 +13,18 @@ class Order(Base):
     __tablename__ = "orders"
 
     status: Mapped[Enum] = mapped_column(Enum(OrderStatusEnum), default=OrderStatusEnum.created)
-    user: Mapped["User"] = relationship("User", foreign_keys=User.id)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
+    user: Mapped["User"] = relationship("User", cascade="all,delete")
 
     def __repr__(self) -> str:
         return f"Order({self.id=}, {self.user.name=}, {self.user.surname=}, {self.user.father_name=})"
+
+
+class OrderItem(Base):
+    """Связь многие-ко-многим заказы с товарами"""
+    __tablename__ = "orders_items"
+
+    order: Mapped["Order"] = relationship("Order", cascade="all,delete")
+    order_id: Mapped[int] = mapped_column(ForeignKey("orders.id"))
+    item: Mapped["Item"] = relationship("Item", cascade="all,delete")
+    item_id: Mapped[int] = mapped_column(ForeignKey("items.id"))

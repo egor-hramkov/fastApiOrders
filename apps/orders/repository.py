@@ -12,6 +12,6 @@ class OrderRepository:
         """Получение заказа"""
         ...
 
-    def create_order(self, order: dict) -> dict:
+    def create(self, order: dict) -> dict:
         """Создание заказа"""
         ...

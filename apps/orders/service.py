@@ -1,4 +1,5 @@
 from apps.orders.repository import OrderRepository
+from apps.orders.schemas import Order
 
 
 class OrderService:
@@ -9,6 +10,6 @@ class OrderService:
         """Получение заказа"""
         ...
 
-    def create_order(self, order: dict) -> dict:
+    def create_order(self, order: Order) -> dict:
         """Создание заказа"""
         ...

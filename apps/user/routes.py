@@ -33,14 +33,7 @@ async def get_user(user_id: int) -> Any:
 
 
 @router.delete("/{user_id}", response_model=UserOutModel)
-async def delete_user(user_id: int, username: str = None) -> Any:
-    """Удаление пользователя"""
-    user = await service().delete_user(user_id, username)
-    return user
-
-
-@router.delete("/{user_id}", response_model=UserOutModel)
-async def delete_user(user_id: int, username: str = None) -> Any:
+async def delete_user(user_id: int) -> Any:
     """Удаление пользователя"""
     user = await service().delete_user(user_id)
     return user

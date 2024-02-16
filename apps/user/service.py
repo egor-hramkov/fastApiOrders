@@ -16,7 +16,7 @@ class UserService:
         return user
 
     async def create_user(self, user_data: UserCreateModel) -> User:
-        user = await self.repository().create_user(user_data)
+        user = await self.repository().create(user_data)
         return user
 
     async def update_user(self, user_id: int, user_data: UserUpdateModel) -> User:

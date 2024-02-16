@@ -3,7 +3,6 @@ from pydantic import BaseModel, EmailStr
 
 class BaseUser(BaseModel):
     """Базовые поля пользователя"""
-    id: int = None
     username: str
     email: EmailStr
     password: str
