@@ -1,7 +1,8 @@
 from sqlalchemy.ext.asyncio import AsyncSession, AsyncEngine, async_sessionmaker
 from sqlalchemy.ext.asyncio import create_async_engine
 
-from apps.orders.models import Item, Order
+from apps.orders.models import Order
+from apps.items.models import Item
 from apps.user.models import User
 from database.base_models import Base
 from settings.db_settings import DB_SETTINGS
