@@ -4,23 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="515b7096-2419-4f30-a1c2-7ebdc3e999c5" name="Changes" comment="Написание тестов для замера синхронных и асинхронных запросов">
-      <change afterPath="$PROJECT_DIR$/apps/orders/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/orders/enums.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/orders/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/orders/repository.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/orders/routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/orders/schemas.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/orders/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fastApiOrders.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fastApiOrders.iml" afterDir="false" />
+    <list default="true" id="515b7096-2419-4f30-a1c2-7ebdc3e999c5" name="Changes" comment="add unique index item.name">
+      <change afterPath="$PROJECT_DIR$/apps/items/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/items/exceptions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/items/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/items/repository.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/items/routes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/items/schemas.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/items/service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alembic.ini" beforeDir="false" afterPath="$PROJECT_DIR$/alembic.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/orders/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/orders/repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/repository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/orders/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/orders/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/schemas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/orders/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user/repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/repository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/schemas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/utils/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/utils/helpers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/sql_alchemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/sql_alchemy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migration/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migration/env.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migration/script.py.mako" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migration/versions/3926e430cd0a_initital.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migration/versions/42a1070f659a_add_username_and_password.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +72,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "FastAPI.fastApiOrders.executor": "Debug",
+    "FastAPI.fastApiOrders.executor": "Run",
     "Python.async_repository.executor": "Run",
     "Python.compare_sync_async.executor": "Run",
     "Python.consumer (1).executor": "Run",
@@ -82,7 +87,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/my_projects/fastApiOrders/kafka",
+    "last_opened_file_path": "C:/my_projects/fastApiOrders/apps/items/models.py",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -99,13 +104,14 @@
       <recent name="C:\my_projects\fastApiOrders\apps\auth" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\my_projects\fastApiOrders\tests\test_real_db" />
-      <recent name="C:\my_projects\fastApiOrders\apps" />
-      <recent name="C:\my_projects\fastApiOrders\database" />
-      <recent name="C:\my_projects\fastApiOrders\tests" />
+      <recent name="C:\my_projects\fastApiOrders\apps\orders" />
+      <recent name="C:\my_projects\fastApiOrders\apps\items" />
+      <recent name="C:\my_projects\fastApiOrders\apps\orders\repositories" />
+      <recent name="C:\my_projects\fastApiOrders\apps\orders\services" />
+      <recent name="C:\my_projects\fastApiOrders\apps\orders\routes" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.create_db">
+  <component name="RunManager" selected="FastAPI.fastApiOrders">
     <configuration name="async_repository" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="fastApiOrders" />
       <option name="ENV_FILES" value="" />
@@ -276,7 +282,8 @@
       <workItem from="1707810656749" duration="9097000" />
       <workItem from="1707887766466" duration="7411000" />
       <workItem from="1707896213635" duration="17643000" />
-      <workItem from="1707974913594" duration="16698000" />
+      <workItem from="1707974913594" duration="23892000" />
+      <workItem from="1708061204626" duration="11358000" />
     </task>
     <task id="LOCAL-00001" summary="project init">
       <option name="closed" value="true" />
@@ -518,7 +525,47 @@
       <option name="project" value="LOCAL" />
       <updated>1707987479050</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Написание приложения для заказов, переписывание алембик на асинхронную версию с новыми миграциям">
+      <option name="closed" value="true" />
+      <created>1707997442202</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1707997442202</updated>
+    </task>
+    <task id="LOCAL-00032" summary="init 3 tables migrations">
+      <option name="closed" value="true" />
+      <created>1707997453018</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1707997453018</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Миграция изменения поля Item.price">
+      <option name="closed" value="true" />
+      <created>1707998233292</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1707998233292</updated>
+    </task>
+    <task id="LOCAL-00034" summary="init foreign keys">
+      <option name="closed" value="true" />
+      <created>1707999703213</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1707999703213</updated>
+    </task>
+    <task id="LOCAL-00035" summary="add unique index item.name">
+      <option name="closed" value="true" />
+      <created>1708002853049</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1708002853049</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,11 +586,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="initial migration" />
-    <MESSAGE value="Обновление зависимостей" />
-    <MESSAGE value="Добавление PyJwt в зависимости" />
-    <MESSAGE value="Добавление валидатора емаил, пароля в зависимости" />
-    <MESSAGE value="Изменения по модели пользователя" />
     <MESSAGE value="Исправление скрипта по созданию бд" />
     <MESSAGE value="Удаление лишней метадаты БД" />
     <MESSAGE value="Исправление конфига метаданных" />
@@ -564,7 +606,23 @@
     <MESSAGE value="Переписывание хеширования пароля на асинхронность, добавление aiobcrypt" />
     <MESSAGE value="Переписывание всех запросов к бд на асинхронность" />
     <MESSAGE value="Написание тестов для замера синхронных и асинхронных запросов" />
-    <option name="LAST_COMMIT_MESSAGE" value="Написание тестов для замера синхронных и асинхронных запросов" />
+    <MESSAGE value="Написание приложения для заказов, переписывание алембик на асинхронную версию с новыми миграциям" />
+    <MESSAGE value="init 3 tables migrations" />
+    <MESSAGE value="Миграция изменения поля Item.price" />
+    <MESSAGE value="init foreign keys" />
+    <MESSAGE value="add unique index item.name" />
+    <option name="LAST_COMMIT_MESSAGE" value="add unique index item.name" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/apps/items/repository.py</url>
+          <line>67</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/fastApiOrders$sql_alchemy.coverage" NAME="sql_alchemy Coverage Results" MODIFIED="1707467154740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -574,7 +632,7 @@
     <SUITE FILE_PATH="coverage/fastApiOrders$producer.coverage" NAME="producer Coverage Results" MODIFIED="1707811950499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kafka" />
     <SUITE FILE_PATH="coverage/fastApiOrders$producer__1_.coverage" NAME="producer (1) Coverage Results" MODIFIED="1707904671683" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kafka_layer" />
     <SUITE FILE_PATH="coverage/fastApiOrders$async_repository.coverage" NAME="async_repository Coverage Results" MODIFIED="1707912450003" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apps/user" />
-    <SUITE FILE_PATH="coverage/fastApiOrders$fastApiOrders.coverage" NAME="fastApiOrders Coverage Results" MODIFIED="1707987624754" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/fastApiOrders$fastApiOrders.coverage" NAME="fastApiOrders Coverage Results" MODIFIED="1708077473404" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/fastApiOrders$consumer__1_.coverage" NAME="consumer (1) Coverage Results" MODIFIED="1707899749408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kafka_layer" />
     <SUITE FILE_PATH="coverage/fastApiOrders$measure_sync_time__1_.coverage" NAME="measure_sync_time (1) Coverage Results" MODIFIED="1707916701345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/test_real_db" />
     <SUITE FILE_PATH="coverage/fastApiOrders$measure_async_time.coverage" NAME="measure_async_time Coverage Results" MODIFIED="1707987313188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/test_real_db" />
