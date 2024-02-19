@@ -22,13 +22,3 @@ class OrderSchema(BaseModel):
 class OrderIn(BaseModel):
     """Сущность входных параметров заказа"""
     items: list[ItemInOrder] = Field(default_factory=list)
-
-
-class OrderCreate(OrderSchema):
-    """Сущность для создания заказа"""
-    ...
-
-
-class OrderOut(OrderSchema):
-    """Сущность для ответа с информацией о заказе"""
-    ...
