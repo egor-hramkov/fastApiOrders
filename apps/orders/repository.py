@@ -36,10 +36,7 @@ class OrderRepository:
         """Создание заказа"""
         new_order = await self.__build_order(user_id)
         await self.__save_order(new_order)
-        items_ids = [item.id for item in order.items]
-        items = await self._item_repository.get_items(items_ids)
-        items_in_order = await self.__build_items_links_to_order(items, new_order.id)
-        await self.__link_items_to_an_order(items_in_order)
+        items = await self.__prepare_items_in_order(order, new_order.id)
         user = await self._user_repository.get_user(user_id)
         order_data = await OrderSchema.build_order_schema(new_order, user, items)
         return order_data
@@ -87,4 +84,12 @@ class OrderRepository:
             order_items = result.scalars().all()
         items_ids = [item.item_id for item in order_items]
         items = await self._item_repository.get_items(items_ids)
+        return items
+
+    async def __prepare_items_in_order(self, order: OrderIn, order_id: int) -> list[ItemSchema]:
+        """Создаёт связи товаров с заказом"""
+        items_ids = [item.id for item in order.items]
+        items = await self._item_repository.get_items(items_ids)
+        items_in_order = await self.__build_items_links_to_order(items, order_id)
+        await self.__link_items_to_an_order(items_in_order)
         return items

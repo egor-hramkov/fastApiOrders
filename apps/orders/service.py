@@ -1,6 +1,5 @@
 from apps.orders.repository import OrderRepository
 from apps.orders.schemas import OrderSchema, OrderIn
-from apps.user.schemas import BaseUser
 
 
 class OrderService:

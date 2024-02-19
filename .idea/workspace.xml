@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="515b7096-2419-4f30-a1c2-7ebdc3e999c5" name="Changes" comment="Удаление лишних схем">
+    <list default="true" id="515b7096-2419-4f30-a1c2-7ebdc3e999c5" name="Changes" comment="Добавление сериализации в репозитории Item">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/items/repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/items/repository.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/items/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/items/schemas.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/orders/repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/repository.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/orders/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/orders/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,7 +266,7 @@
       <workItem from="1707896213635" duration="17643000" />
       <workItem from="1707974913594" duration="23892000" />
       <workItem from="1708061204626" duration="18169000" />
-      <workItem from="1708320108481" duration="12855000" />
+      <workItem from="1708320108481" duration="13339000" />
     </task>
     <task id="LOCAL-00001" summary="project init">
       <option name="closed" value="true" />
@@ -590,7 +588,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708332695984</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Добавление сериализации в репозитории Item">
+      <option name="closed" value="true" />
+      <created>1708333194358</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1708333194358</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -614,7 +620,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавление bcrypt в зависимости" />
     <MESSAGE value="Добавление приложения пользователя и ouath2" />
     <MESSAGE value="КРУДы по пользователю" />
     <MESSAGE value="Эндпоинт по получению всех пользователей" />
@@ -639,7 +644,8 @@
     <MESSAGE value="Переработка запросов из users, реализация приложения товаров, реализация приложения заказов" />
     <MESSAGE value="Написание крудов для заказа, добавление сериализации в репозитории, переписывание схем" />
     <MESSAGE value="Удаление лишних схем" />
-    <option name="LAST_COMMIT_MESSAGE" value="Удаление лишних схем" />
+    <MESSAGE value="Добавление сериализации в репозитории Item" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавление сериализации в репозитории Item" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -648,11 +654,6 @@
           <url>file://$PROJECT_DIR$/apps/items/repository.py</url>
           <line>69</line>
           <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/apps/orders/schemas.py</url>
-          <line>18</line>
-          <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
