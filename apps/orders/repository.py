@@ -32,18 +32,20 @@ class OrderRepository:
         order_data = await OrderSchema.build_order_schema(order, user, items)
         return order_data
 
-    async def create(self, order: OrderIn, user_id: int) -> Order:
+    async def create(self, order: OrderIn, user_id: int) -> OrderSchema:
         """Создание заказа"""
         new_order = await self.__build_order(user_id)
         await self.__save_order(new_order)
         items_ids = [item.id for item in order.items]
-        items: list[Item] = await self._item_repository.get_items(items_ids)
+        items = await self._item_repository.get_items(items_ids)
         items_in_order = await self.__build_items_links_to_order(items, new_order.id)
         await self.__link_items_to_an_order(items_in_order)
-        return new_order
+        user = await self._user_repository.get_user(user_id)
+        order_data = await OrderSchema.build_order_schema(new_order, user, items)
+        return order_data
 
     async def __build_order(self, user_id: int) -> Order:
-        """Создание заказа"""
+        """Собирает модель заказа"""
         new_order = Order()
         new_order.status = OrderStatusEnum.created
         new_order.user_id = user_id
@@ -57,7 +59,7 @@ class OrderRepository:
             await db.commit()
             # await db.refresh(order)
 
-    async def __build_items_links_to_order(self, items: list[Item], order_id: int) -> list[OrderItem]:
+    async def __build_items_links_to_order(self, items: list[ItemSchema], order_id: int) -> list[OrderItem]:
         """Создает сущности связки товар-заказ"""
         items_in_order: list[OrderItem] = []
         for item in items:

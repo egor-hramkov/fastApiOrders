@@ -5,6 +5,7 @@ from pydantic import BaseModel, Field
 
 class ItemSchema(BaseModel):
     """Сущность товара"""
+    id: int
     name: str
     price: Decimal = Field(gt=0)
 

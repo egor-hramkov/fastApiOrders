@@ -30,17 +30,17 @@ class ItemRepository:
         items = items.scalars().all()
         return [ItemSchema.model_validate(item, from_attributes=True) for item in items]
 
-    async def update(self, item_id: int, new_item: ItemSchema) -> Item:
+    async def update(self, item_id: int, new_item: ItemSchema) -> ItemSchema:
         """Обновление товара"""
         item = await self.__build_item(new_item, item_id)
         await self.__save(item)
-        return item
+        return ItemSchema.model_validate(item, from_attributes=True)
 
-    async def create(self, item: ItemSchema) -> Item:
+    async def create(self, item: ItemSchema) -> ItemSchema:
         """Создание товара"""
         new_item = await self.__build_item(item)
         await self.__save(new_item)
-        return new_item
+        return ItemSchema.model_validate(item, from_attributes=True)
 
     async def delete(self, item_id: int) -> None:
         async with self.session() as db:
