@@ -1,15 +1,16 @@
 from apps.orders.repository import OrderRepository
-from apps.orders.schemas import Order
+from apps.orders.schemas import OrderSchema, OrderIn
+from apps.user.schemas import BaseUser
 
 
 class OrderService:
     """Сервис для работы с заказами"""
     _repository = OrderRepository()
 
-    def get_order(self, order_id: int) -> dict:
+    async def get_order(self, order_id: int, user_id: int) -> OrderSchema:
         """Получение заказа"""
-        ...
+        return await self._repository.get(order_id, user_id)
 
-    def create_order(self, order: Order) -> dict:
+    async def create_order(self, order: OrderIn, user_id: int) -> OrderSchema:
         """Создание заказа"""
-        ...
+        return await self._repository.create(order, user_id)

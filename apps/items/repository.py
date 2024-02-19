@@ -14,19 +14,21 @@ class ItemRepository:
     """Репозиторий для работы с товаром"""
     session: AsyncSession = async_session
 
-    async def get(self, item_id: int) -> Item:
+    async def get(self, item_id: int) -> ItemSchema:
         """Получение товара"""
         async with self.session() as db:
             statement = select(Item).filter(Item.id == item_id)
             item = await db.execute(statement)
-        return item.scalars().first()
+        item = item.scalars().first()
+        return ItemSchema.model_validate(item, from_attributes=True)
 
-    async def get_items(self, ids: list[int]) -> list[Item]:
+    async def get_items(self, ids: list[int]) -> list[ItemSchema]:
         """Получение множества товаров"""
         async with self.session() as db:
             statement = select(Item).filter(Item.id.in_(ids))
             items = await db.execute(statement)
-        return items.scalars().all()
+        items = items.scalars().all()
+        return [ItemSchema.model_validate(item, from_attributes=True) for item in items]
 
     async def update(self, item_id: int, new_item: ItemSchema) -> Item:
         """Обновление товара"""

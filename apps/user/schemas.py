@@ -23,6 +23,7 @@ class UserUpdateModel(BaseUser):
 
 class UserOutModel(BaseModel):
     """Модель для вывода информации о пользователе"""
+    id: int = None
     username: str
     email: EmailStr
     name: str

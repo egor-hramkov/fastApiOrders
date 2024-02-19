@@ -19,10 +19,10 @@ async def get_token(request: OAuth2PasswordRequestForm = Depends()):
 
     if not user:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='Invalid credentials')
-    if not HashPassword.verify(user.password, request.password):
+    if not await HashPassword.verify(user.password, request.password):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='Wrong password')
 
-    access_token = OAuth2.create_access_token(data={'username': user.username})
+    access_token = await OAuth2.create_access_token(data={'username': user.username})
 
     return {
         'access_token': access_token,

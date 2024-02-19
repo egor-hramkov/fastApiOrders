@@ -4,28 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="515b7096-2419-4f30-a1c2-7ebdc3e999c5" name="Changes" comment="add unique index item.name">
-      <change afterPath="$PROJECT_DIR$/apps/items/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/items/exceptions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/items/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/items/repository.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/items/routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/items/schemas.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/items/service.py" afterDir="false" />
+    <list default="true" id="515b7096-2419-4f30-a1c2-7ebdc3e999c5" name="Changes" comment="Переработка запросов из users, реализация приложения товаров, реализация приложения заказов">
+      <change afterPath="$PROJECT_DIR$/apps/orders/exceptions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/orders/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/auth/oauth2.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/auth/oauth2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/auth/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/auth/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/items/repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/items/repository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/items/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/items/schemas.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/orders/repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/repository.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/orders/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/orders/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/schemas.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/orders/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/user/repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/repository.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/user/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/schemas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/user/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/utils/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/utils/helpers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/sql_alchemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/sql_alchemy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +64,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "FastAPI.fastApiOrders.executor": "Run",
+    "FastAPI.fastApiOrders.executor": "Debug",
     "Python.async_repository.executor": "Run",
     "Python.compare_sync_async.executor": "Run",
     "Python.consumer (1).executor": "Run",
@@ -283,7 +275,8 @@
       <workItem from="1707887766466" duration="7411000" />
       <workItem from="1707896213635" duration="17643000" />
       <workItem from="1707974913594" duration="23892000" />
-      <workItem from="1708061204626" duration="11358000" />
+      <workItem from="1708061204626" duration="18169000" />
+      <workItem from="1708320108481" duration="12037000" />
     </task>
     <task id="LOCAL-00001" summary="project init">
       <option name="closed" value="true" />
@@ -565,14 +558,41 @@
       <option name="project" value="LOCAL" />
       <updated>1708002853049</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Доработан парсер ошибок, написан кастомный маппер из любой модели Pydentic в модель SQLalchemy">
+      <option name="closed" value="true" />
+      <created>1708077861644</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1708077861644</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Fix metadata">
+      <option name="closed" value="true" />
+      <created>1708077874707</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1708077874707</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Переработка запросов из users, реализация приложения товаров, реализация приложения заказов">
+      <option name="closed" value="true" />
+      <created>1708078012971</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1708078012971</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="executable:docker" />
     <option featureType="com.intellij.fileTypeFactory" implementationName=".env" />
+    <option featureType="dependencySupport" implementationName="executable:kubectl" />
+    <option featureType="dependencySupport" implementationName="python:kafka-python" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -586,9 +606,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Исправление скрипта по созданию бд" />
-    <MESSAGE value="Удаление лишней метадаты БД" />
-    <MESSAGE value="Исправление конфига метаданных" />
     <MESSAGE value="Лишний импорт" />
     <MESSAGE value="Добавление полей в БД" />
     <MESSAGE value="Добавление bcrypt в зависимости" />
@@ -611,15 +628,23 @@
     <MESSAGE value="Миграция изменения поля Item.price" />
     <MESSAGE value="init foreign keys" />
     <MESSAGE value="add unique index item.name" />
-    <option name="LAST_COMMIT_MESSAGE" value="add unique index item.name" />
+    <MESSAGE value="Доработан парсер ошибок, написан кастомный маппер из любой модели Pydentic в модель SQLalchemy" />
+    <MESSAGE value="Fix metadata" />
+    <MESSAGE value="Переработка запросов из users, реализация приложения товаров, реализация приложения заказов" />
+    <option name="LAST_COMMIT_MESSAGE" value="Переработка запросов из users, реализация приложения товаров, реализация приложения заказов" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/apps/items/repository.py</url>
-          <line>67</line>
+          <line>69</line>
           <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/apps/orders/schemas.py</url>
+          <line>18</line>
+          <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -632,7 +657,7 @@
     <SUITE FILE_PATH="coverage/fastApiOrders$producer.coverage" NAME="producer Coverage Results" MODIFIED="1707811950499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kafka" />
     <SUITE FILE_PATH="coverage/fastApiOrders$producer__1_.coverage" NAME="producer (1) Coverage Results" MODIFIED="1707904671683" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kafka_layer" />
     <SUITE FILE_PATH="coverage/fastApiOrders$async_repository.coverage" NAME="async_repository Coverage Results" MODIFIED="1707912450003" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apps/user" />
-    <SUITE FILE_PATH="coverage/fastApiOrders$fastApiOrders.coverage" NAME="fastApiOrders Coverage Results" MODIFIED="1708077473404" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/fastApiOrders$fastApiOrders.coverage" NAME="fastApiOrders Coverage Results" MODIFIED="1708332236243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/fastApiOrders$consumer__1_.coverage" NAME="consumer (1) Coverage Results" MODIFIED="1707899749408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kafka_layer" />
     <SUITE FILE_PATH="coverage/fastApiOrders$measure_sync_time__1_.coverage" NAME="measure_sync_time (1) Coverage Results" MODIFIED="1707916701345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/test_real_db" />
     <SUITE FILE_PATH="coverage/fastApiOrders$measure_async_time.coverage" NAME="measure_async_time Coverage Results" MODIFIED="1707987313188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/test_real_db" />

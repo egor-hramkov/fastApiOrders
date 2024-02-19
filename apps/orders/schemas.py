@@ -1,21 +1,34 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
-from apps.items.schemas import ItemSchema
+from apps.items.schemas import ItemSchema, ItemInOrder
+from apps.orders.models import Order
 from apps.user.schemas import UserOutModel
 
 
-class Order(BaseModel):
+class OrderSchema(BaseModel):
     """Сущность заказа"""
+    model_config = ConfigDict(arbitrary_types_allowed=True)
     id: int = None
+    status: str
     items: list[ItemSchema] = Field(default_factory=list)
     user: UserOutModel
 
+    @staticmethod
+    async def build_order_schema(order: Order, user: UserOutModel, items: list[ItemSchema]) -> "OrderSchema":
+        """Собирает сущность"""
+        return OrderSchema(id=order.id, status=order.status, items=items, user=user)
 
-class OrderCreate(Order):
+
+class OrderIn(BaseModel):
+    """Сущность входных параметров заказа"""
+    items: list[ItemInOrder] = Field(default_factory=list)
+
+
+class OrderCreate(OrderSchema):
     """Сущность для создания заказа"""
     ...
 
 
-class OrderOut(Order):
+class OrderOut(OrderSchema):
     """Сущность для ответа с информацией о заказе"""
     ...
