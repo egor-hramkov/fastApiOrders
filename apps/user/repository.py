@@ -24,8 +24,8 @@ class UserRepository:
             result = await db.execute(select(User))
             return result.scalars()
 
-    async def get_user(self, user_id: int = None, email: str = None, username: str = None) -> UserWithPW:
-        """Получение пользователя"""
+    async def get_raw_user(self, user_id: int = None, email: str = None, username: str = None) -> User:
+        """Получение записи пользователя в БД"""
         async with self.session() as db:
             if user_id:
                 result = await db.execute(select(User).filter(User.id == user_id))
@@ -34,6 +34,11 @@ class UserRepository:
             elif username:
                 result = await db.execute(select(User).filter(User.username == username))
         user = result.scalars().first()
+        return user
+
+    async def get_user(self, user_id: int = None, email: str = None, username: str = None) -> UserWithPW:
+        """Получение пользователя"""
+        user = await self.get_raw_user(user_id, email, username)
         return UserWithPW.model_validate(user, from_attributes=True)
 
     async def create(self, user_data: UserCreateModel) -> User:
@@ -71,7 +76,7 @@ class UserRepository:
     async def __build_user(self, user_data: UserCreateModel | UserUpdateModel, user_id: int = None) -> User:
         """Собирает сущность пользователя"""
         if user_id is not None:
-            user = await self.get_user(user_id=user_id)
+            user = await self.get_raw_user(user_id=user_id)
         else:
             user = User()
         mapper = SchemaMapper(user_data, user)

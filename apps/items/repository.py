@@ -14,12 +14,17 @@ class ItemRepository:
     """Репозиторий для работы с товаром"""
     session: AsyncSession = async_session
 
-    async def get(self, item_id: int) -> ItemSchema:
-        """Получение товара"""
+    async def get_raw_item(self, item_id: int) -> Item:
+        """Получение записи товара из БД"""
         async with self.session() as db:
             statement = select(Item).filter(Item.id == item_id)
             item = await db.execute(statement)
         item = item.scalars().first()
+        return item
+
+    async def get(self, item_id: int) -> ItemSchema:
+        """Получение товара"""
+        item = await self.get_raw_item(item_id)
         return ItemSchema.model_validate(item, from_attributes=True)
 
     async def get_items(self, ids: list[int]) -> list[ItemSchema]:
@@ -40,11 +45,11 @@ class ItemRepository:
         """Создание товара"""
         new_item = await self.__build_item(item)
         await self.__save(new_item)
-        return ItemSchema.model_validate(item, from_attributes=True)
+        return ItemSchema.model_validate(new_item, from_attributes=True)
 
     async def delete(self, item_id: int) -> None:
         async with self.session() as db:
-            item = await self.get(item_id)
+            item = await self.get_raw_item(item_id)
             await db.delete(item)
             await db.commit()
 
@@ -64,7 +69,7 @@ class ItemRepository:
         if item_id is None:
             item = Item()
         else:
-            item = await self.get(item_id)
+            item = await self.get_raw_item(item_id)
         mapper = SchemaMapper(item_data, item)
         new_item: Item = mapper.py_to_db_model()
         return new_item

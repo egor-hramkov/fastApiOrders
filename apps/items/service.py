@@ -7,19 +7,19 @@ class ItemService:
     """Сервис для работы с товаром"""
     _repository = ItemRepository()
 
-    async def create_item(self, item: ItemSchema) -> Item:
+    async def create_item(self, item: ItemSchema) -> ItemSchema:
         """Создание товара"""
         return await self._repository.create(item)
 
-    async def get_item(self, item_id: int) -> Item:
+    async def get_item(self, item_id: int) -> ItemSchema:
         """Получение товара"""
         return await self._repository.get(item_id)
 
-    async def get_items(self, item_ids: list[int]) -> list[Item]:
+    async def get_items(self, item_ids: list[int]) -> list[ItemSchema]:
         """Получение товара"""
         return await self._repository.get_items(item_ids)
 
-    async def update_item(self, item_id: int, item: ItemSchema) -> Item:
+    async def update_item(self, item_id: int, item: ItemSchema) -> ItemSchema:
         """Обновление товара"""
         return await self._repository.update(item_id, item)
 

@@ -20,6 +20,8 @@ class SchemaMapper:
         """Маппит pydantic model в database model"""
         new_item = self.db_model
         for field in self.pydentic_model.model_fields:
+            if field == 'id':
+                continue
             new_item.__setattr__(field, getattr(self.pydentic_model, field))
         return new_item
 

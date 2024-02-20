@@ -21,3 +21,8 @@ class OrderService:
     async def update_order(self, order_id: int, order: OrderUpdateSchema) -> OrderSchema:
         """Удаление заказа"""
         return await self._repository.update(order_id, order)
+
+    async def update_order_status(self, order_id: int, status: str) -> None:
+        """Обновление статуса заказа"""
+        await self._repository.update_order_status(order_id, status)
+

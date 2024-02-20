@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field
 
 class ItemSchema(BaseModel):
     """Сущность товара"""
-    id: int
+    id: int = None
     name: str
     price: Decimal = Field(gt=0)
 
@@ -13,4 +13,3 @@ class ItemSchema(BaseModel):
 class ItemInOrder(BaseModel):
     """Товары в запросе заказа"""
     id: int
-    name: str

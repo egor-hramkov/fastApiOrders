@@ -49,7 +49,7 @@ class OrderRepository:
 
     async def delete_order(self, order_id: int) -> None:
         """Удаление заказа"""
-        order = self.get_raw_order(order_id)
+        order = await self.get_raw_order(order_id)
         async with self.session() as db:
             await db.delete(order)
             await db.commit()
@@ -60,7 +60,7 @@ class OrderRepository:
         await self.update_order_status(order_id, order_data.status)
         await self.__save_order(order)
         async with self.session() as db:
-            stmt = select(OrderItem).where(Order.id == order_id)
+            stmt = select(OrderItem).where(OrderItem.order_id == order_id)
             result = await db.execute(stmt)
         items_in_order = result.scalars().all()
         ids = set(item.item_id for item in items_in_order)
@@ -85,7 +85,7 @@ class OrderRepository:
             await db.execute(statement)
             await db.commit()
 
-    async def update_order_status(self, order_id: int, new_status: str):
+    async def update_order_status(self, order_id: int, new_status: str) -> None:
         """Обновляет статус заказа"""
         if new_status not in OrderStatusEnum:
             raise StatusDoesNotExistsException()

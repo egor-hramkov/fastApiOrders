@@ -15,10 +15,7 @@ def run_consumer():
     for msg in consumer:
         print(msg)
         try:
-            # handle_pool_cache_excess()
             consumer.commit()
         except kafka_errors.CommitFailedError:
-            # Отлавливаем редкий, но возможный случай исключения
-            # при ребалансе
             print("Зашли в эксепт")
             continue

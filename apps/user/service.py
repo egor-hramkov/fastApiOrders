@@ -24,5 +24,4 @@ class UserService:
         return user
 
     async def delete_user(self, user_id: int = None, username: str = None) -> None:
-        user = await self.repository().delete_user(user_id, username)
-        return user
+        return await self.repository().delete_user(user_id, username)

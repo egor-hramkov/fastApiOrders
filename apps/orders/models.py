@@ -13,8 +13,8 @@ class Order(Base):
     __tablename__ = "orders"
 
     status: Mapped[Enum] = mapped_column(Enum(OrderStatusEnum), default=OrderStatusEnum.created)
-    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
-    user: Mapped["User"] = relationship("User", cascade="all,delete")
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"))
+    user: Mapped["User"] = relationship("User")
 
     def __repr__(self) -> str:
         return f"Order({self.id=}, {self.user.name=}, {self.user.surname=}, {self.user.father_name=})"
