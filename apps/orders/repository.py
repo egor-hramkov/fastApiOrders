@@ -5,7 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from apps.items.repository import ItemRepository
 from apps.items.schemas import ItemSchema
 from apps.orders.enums import OrderStatusEnum
-from apps.orders.exceptions import OrderAlreadyExistsException
+from apps.orders.exceptions import OrderAlreadyExistsException, OrderDoesNotExistsException
 from apps.orders.models import Order, OrderItem
 from apps.orders.schemas import OrderSchema, OrderIn
 from apps.user.repository import UserRepository
@@ -26,6 +26,8 @@ class OrderRepository:
             statement = select(Order).filter(Order.id == order_id)
             result = await db.execute(statement)
             order = result.scalars().first()
+        if order is None:
+            raise OrderDoesNotExistsException()
         user = await self._user_repository.get_user(user_id)
         items = await self.__get_order_items(order_id)
         order_data = await OrderSchema.build_order_schema(order, user, items)
@@ -44,7 +46,9 @@ class OrderRepository:
         """Удаление заказа"""
         async with self.session() as db:
             stmt = delete(Order).where(Order.id == order_id)
-            await db.execute(stmt)
+            res = await db.execute(stmt)
+            if res.rowcount == 0:
+                raise OrderDoesNotExistsException()
             await db.commit()
 
     async def update(self, order: OrderIn) -> OrderSchema:

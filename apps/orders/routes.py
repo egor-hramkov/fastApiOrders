@@ -30,7 +30,14 @@ async def create_order(order: OrderIn, current_user: User = Depends(OAuth2().get
 
 
 @router.delete("/{order_id}")
-async def create_order(order_id: int, current_user: User = Depends(OAuth2().get_current_user)) -> dict[str, str]:
-    """Создание заказа"""
+async def delete_order(order_id: int, current_user: User = Depends(OAuth2().get_current_user)) -> dict[str, str]:
+    """Обновление заказа"""
+    await service.delete_order(order_id)
+    return {"result": "Заказ успешно удалён"}
+
+
+@router.put("/{order_id}", response_model=OrderSchema)
+async def update_order(order_id: int, current_user: User = Depends(OAuth2().get_current_user)) -> Any:
+    """Обновление заказа"""
     await service.delete_order(order_id)
     return {"result": "Заказ успешно удалён"}
