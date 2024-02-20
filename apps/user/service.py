@@ -1,6 +1,6 @@
 from apps.user.models import User
 from apps.user.repository import UserRepository
-from apps.user.schemas import UserCreateModel, UserUpdateModel
+from apps.user.schemas import UserCreateModel, UserUpdateModel, UserWithPW
 
 
 class UserService:
@@ -11,7 +11,7 @@ class UserService:
         all_users = await self.repository().get_all_users()
         return all_users
 
-    async def get_user(self, user_id: int = None, email: str = None, username: str = None) -> User:
+    async def get_user(self, user_id: int = None, email: str = None, username: str = None) -> UserWithPW:
         user = await self.repository().get_user(user_id, email, username)
         return user
 
@@ -23,6 +23,6 @@ class UserService:
         user = await self.repository().update_user(user_id, user_data)
         return user
 
-    async def delete_user(self, user_id: int = None, username: str = None) -> User:
+    async def delete_user(self, user_id: int = None, username: str = None) -> None:
         user = await self.repository().delete_user(user_id, username)
         return user

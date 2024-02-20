@@ -1,11 +1,11 @@
-from typing import Annotated, Any
+from typing import Annotated, Any, Dict
 
 from fastapi import APIRouter, Depends
 from apps.auth.oauth2 import OAuth2
 from apps.orders.schemas import OrderSchema, OrderIn
 from apps.orders.service import OrderService
 from apps.user.models import User
-from apps.user.schemas import BaseUser
+from apps.user.schemas import UserWithPW
 
 router = APIRouter(
     prefix="/orders",
@@ -27,3 +27,10 @@ async def create_order(order: OrderIn, current_user: User = Depends(OAuth2().get
     """Создание заказа"""
     order = await service.create_order(order, current_user.id)
     return order
+
+
+@router.delete("/{order_id}")
+async def create_order(order_id: int, current_user: User = Depends(OAuth2().get_current_user)) -> dict[str, str]:
+    """Создание заказа"""
+    await service.delete_order(order_id)
+    return {"result": "Заказ успешно удалён"}

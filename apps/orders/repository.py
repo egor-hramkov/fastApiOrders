@@ -1,8 +1,7 @@
-from sqlalchemy import select
+from sqlalchemy import select, delete
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from apps.items.models import Item
 from apps.items.repository import ItemRepository
 from apps.items.schemas import ItemSchema
 from apps.orders.enums import OrderStatusEnum
@@ -40,6 +39,17 @@ class OrderRepository:
         user = await self._user_repository.get_user(user_id)
         order_data = await OrderSchema.build_order_schema(new_order, user, items)
         return order_data
+
+    async def delete(self, order_id: int) -> None:
+        """Удаление заказа"""
+        async with self.session() as db:
+            stmt = delete(Order).where(Order.id == order_id)
+            await db.execute(stmt)
+            await db.commit()
+
+    async def update(self, order: OrderIn) -> OrderSchema:
+        """Обновление заказа"""
+        ...
 
     async def __build_order(self, user_id: int) -> Order:
         """Собирает модель заказа"""

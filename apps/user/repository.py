@@ -5,12 +5,12 @@ from apps.auth.hash_password import HashPassword
 from apps.user import models
 from apps.user.exceptions import UserAlreadyExistsException
 from apps.user.models import User
-from apps.user.schemas import UserCreateModel, UserUpdateModel, UserOutModel
+from apps.user.schemas import UserCreateModel, UserUpdateModel, UserOutModel, UserWithPW
 from apps.user.utils import ExceptionParser
 from apps.utils.helpers import SchemaMapper
 from database.sql_alchemy import async_session
 
-from sqlalchemy import select
+from sqlalchemy import select, delete, or_
 from sqlalchemy.ext.asyncio import AsyncSession
 
 
@@ -24,7 +24,7 @@ class UserRepository:
             result = await db.execute(select(User))
             return result.scalars()
 
-    async def get_user(self, user_id: int = None, email: str = None, username: str = None) -> UserOutModel | None:
+    async def get_user(self, user_id: int = None, email: str = None, username: str = None) -> UserWithPW:
         """Получение пользователя"""
         async with self.session() as db:
             if user_id:
@@ -34,7 +34,7 @@ class UserRepository:
             elif username:
                 result = await db.execute(select(User).filter(User.username == username))
         user = result.scalars().first()
-        return UserOutModel.model_validate(user, from_attributes=True)
+        return UserWithPW.model_validate(user, from_attributes=True)
 
     async def create(self, user_data: UserCreateModel) -> User:
         """Создание пользователя"""
@@ -48,13 +48,14 @@ class UserRepository:
         await self.__save_user(updated_user)
         return updated_user
 
-    async def delete_user(self, user_id: int = None, username: str = None) -> UserOutModel:
+    async def delete_user(self, user_id: int = None, username: str = None) -> None:
         """Удаляет пользователя"""
         async with self.session() as db:
-            db_user = await self.get_user(user_id=user_id, username=username)
-            await db.delete(db_user)
+            stmt = delete(User).where(
+                or_(User.id == user_id, User.username == username)
+            )
+            await db.execute(stmt)
             await db.commit()
-        return db_user
 
     async def __save_user(self, user: User):
         """Сохраняет пользователя в БД"""

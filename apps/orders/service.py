@@ -13,3 +13,7 @@ class OrderService:
     async def create_order(self, order: OrderIn, user_id: int) -> OrderSchema:
         """Создание заказа"""
         return await self._repository.create(order, user_id)
+
+    async def delete_order(self, order_id: int) -> None:
+        """Удаление заказа"""
+        return await self._repository.delete(order_id)

@@ -13,5 +13,5 @@ class HashPassword:
 
     @classmethod
     async def verify(cls, hashed_password, plain_password):
-        valid_password = await aiobcrypt.checkpw(plain_password, hashed_password)
+        valid_password = await aiobcrypt.checkpw(str.encode(plain_password), str.encode(hashed_password))
         return valid_password
