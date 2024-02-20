@@ -21,3 +21,13 @@ class OrderDoesNotExistsException(HTTPException):
 
     def __init__(self):
         super().__init__(self.status_code, self.detail, self.headers)
+
+
+class StatusDoesNotExistsException(HTTPException):
+    """Неверный статус заказа"""
+    status_code = status.HTTP_400_BAD_REQUEST
+    detail = 'Неверный статус заказа',
+    headers = {'WWW-Authneticate': 'Bearer'}
+
+    def __init__(self):
+        super().__init__(self.status_code, self.detail, self.headers)

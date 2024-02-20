@@ -2,7 +2,7 @@ from typing import Annotated, Any, Dict
 
 from fastapi import APIRouter, Depends
 from apps.auth.oauth2 import OAuth2
-from apps.orders.schemas import OrderSchema, OrderIn
+from apps.orders.schemas import OrderSchema, OrderIn, OrderUpdateSchema
 from apps.orders.service import OrderService
 from apps.user.models import User
 from apps.user.schemas import UserWithPW
@@ -18,7 +18,7 @@ service = OrderService()
 @router.get("/{order_id}", response_model=OrderSchema)
 async def get_order(order_id: int, current_user: User = Depends(OAuth2().get_current_user)) -> Any:
     """Получение заказа"""
-    order = await service.get_order(order_id, current_user.id)
+    order = await service.get_order(order_id)
     return order
 
 
@@ -37,7 +37,11 @@ async def delete_order(order_id: int, current_user: User = Depends(OAuth2().get_
 
 
 @router.put("/{order_id}", response_model=OrderSchema)
-async def update_order(order_id: int, current_user: User = Depends(OAuth2().get_current_user)) -> Any:
+async def update_order(
+        order_id: int,
+        order: OrderUpdateSchema,
+        current_user: User = Depends(OAuth2().get_current_user)
+) -> Any:
     """Обновление заказа"""
-    await service.delete_order(order_id)
-    return {"result": "Заказ успешно удалён"}
+    order = await service.update_order(order_id, order)
+    return order

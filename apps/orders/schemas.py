@@ -22,3 +22,8 @@ class OrderSchema(BaseModel):
 class OrderIn(BaseModel):
     """Сущность входных параметров заказа"""
     items: list[ItemInOrder] = Field(default_factory=list)
+
+
+class OrderUpdateSchema(OrderIn):
+    """Сущность обновления заказа"""
+    status: str
