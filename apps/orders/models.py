@@ -25,6 +25,6 @@ class OrderItem(Base):
     __tablename__ = "orders_items"
 
     order: Mapped["Order"] = relationship("Order", cascade="all,delete")
-    order_id: Mapped[int] = mapped_column(ForeignKey("orders.id"))
+    order_id: Mapped[int] = mapped_column(ForeignKey("orders.id", ondelete="CASCADE"))
     item: Mapped["Item"] = relationship("Item", cascade="all,delete")
-    item_id: Mapped[int] = mapped_column(ForeignKey("items.id"))
+    item_id: Mapped[int] = mapped_column(ForeignKey("items.id", ondelete="CASCADE"))

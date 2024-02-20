@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="515b7096-2419-4f30-a1c2-7ebdc3e999c5" name="Changes" comment="Код рефакторинг">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/auth/hash_password.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/auth/hash_password.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/orders/repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/repository.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/orders/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/orders/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/repository.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/schemas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/service.py" afterDir="false" />
+    <list default="true" id="515b7096-2419-4f30-a1c2-7ebdc3e999c5" name="Changes" comment="Код-рефакторинг, сериализация значений репозитория пользователя, оптимизация методов delete">
+      <change beforePath="$PROJECT_DIR$/apps/orders/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,7 +267,7 @@
       <workItem from="1707974913594" duration="23892000" />
       <workItem from="1708061204626" duration="18169000" />
       <workItem from="1708320108481" duration="17869000" />
-      <workItem from="1708416350708" duration="2208000" />
+      <workItem from="1708416350708" duration="2542000" />
     </task>
     <task id="LOCAL-00001" summary="project init">
       <option name="closed" value="true" />
@@ -613,7 +605,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708333675286</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Код-рефакторинг, сериализация значений репозитория пользователя, оптимизация методов delete">
+      <option name="closed" value="true" />
+      <created>1708418706559</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1708418706559</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,7 +637,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="КРУДы по пользователю" />
     <MESSAGE value="Эндпоинт по получению всех пользователей" />
     <MESSAGE value="Добавлен .gitignore" />
     <MESSAGE value="Вынесение переменных в переменные среды" />
@@ -662,7 +661,8 @@
     <MESSAGE value="Удаление лишних схем" />
     <MESSAGE value="Добавление сериализации в репозитории Item" />
     <MESSAGE value="Код рефакторинг" />
-    <option name="LAST_COMMIT_MESSAGE" value="Код рефакторинг" />
+    <MESSAGE value="Код-рефакторинг, сериализация значений репозитория пользователя, оптимизация методов delete" />
+    <option name="LAST_COMMIT_MESSAGE" value="Код-рефакторинг, сериализация значений репозитория пользователя, оптимизация методов delete" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
