@@ -4,18 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="515b7096-2419-4f30-a1c2-7ebdc3e999c5" name="Changes" comment="Изменение параметров на переменные среды">
-      <change afterPath="$PROJECT_DIR$/.test.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pytest.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/create_test_db.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/settings/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/settings/db_settings.py" afterDir="false" />
+    <list default="true" id="515b7096-2419-4f30-a1c2-7ebdc3e999c5" name="Changes" comment="Реализация переменных среды для тестов, скрипт по созданию тестовой БД.">
+      <change afterPath="$PROJECT_DIR$/tests/conftest.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/tests/users/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/users/conftest.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/tests/users/test_auth.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/tests/users/test_register.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/utils/database_fixtures.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.test.env" beforeDir="false" afterPath="$PROJECT_DIR$/.test.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/settings/db_settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/settings/db_settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +61,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "FastAPI.fastApiOrders.executor": "Run",
+    "FastAPI.fastApiOrders.executor": "Debug",
+    "Python tests.Python tests for test_auth.test_sum.executor": "Run",
     "Python.async_repository.executor": "Run",
     "Python.compare_sync_async.executor": "Run",
     "Python.consumer (1).executor": "Run",
@@ -105,7 +105,7 @@
       <recent name="C:\my_projects\fastApiOrders\apps\orders\services" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.create_test_db">
+  <component name="RunManager" selected="Python tests.Python tests for test_auth.test_sum">
     <configuration name="consumer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="fastApiOrders" />
       <option name="ENV_FILES" value="" />
@@ -198,29 +198,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sdf" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="fastApiOrders" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/apps/items" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/apps/items/sdf.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="fastApiOrders" type="Python.FastAPI">
       <option name="file" value="$PROJECT_DIR$/main.py" />
       <module name="fastApiOrders" />
@@ -237,21 +214,37 @@
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for test_auth.test_sum" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="fastApiOrders" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/users" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_auth.test_sum&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="FastAPI.fastApiOrders" />
       <item itemvalue="Python.create_test_db" />
       <item itemvalue="Python.db_settings" />
       <item itemvalue="Python.consumer" />
       <item itemvalue="Python.producer" />
-      <item itemvalue="Python.sdf" />
+      <item itemvalue="Python tests.Python tests for test_auth.test_sum" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for test_auth.test_sum" />
         <item itemvalue="Python.create_test_db" />
         <item itemvalue="Python.db_settings" />
         <item itemvalue="Python.producer" />
         <item itemvalue="Python.consumer" />
-        <item itemvalue="Python.sdf" />
       </list>
     </recent_temporary>
   </component>
@@ -280,15 +273,7 @@
       <workItem from="1708061204626" duration="18169000" />
       <workItem from="1708320108481" duration="17869000" />
       <workItem from="1708416350708" duration="17019000" />
-      <workItem from="1708492357931" duration="4023000" />
-    </task>
-    <task id="LOCAL-00002" summary="Подключена БД Postgres, Настроен alimbic">
-      <option name="closed" value="true" />
-      <created>1707475545313</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1707475545314</updated>
+      <workItem from="1708492357931" duration="9810000" />
     </task>
     <task id="LOCAL-00003" summary="initial migration">
       <option name="closed" value="true" />
@@ -674,7 +659,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708496638112</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Реализация переменных среды для тестов, скрипт по созданию тестовой БД.">
+      <option name="closed" value="true" />
+      <created>1708497409064</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1708497409064</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -698,7 +691,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Подключение кафки" />
     <MESSAGE value="return type" />
     <MESSAGE value="Переписывание хеширования пароля на асинхронность, добавление aiobcrypt" />
     <MESSAGE value="Переписывание всех запросов к бд на асинхронность" />
@@ -723,15 +715,16 @@
     <MESSAGE value="настроено изменение статуса заказа через брокеры кафка" />
     <MESSAGE value="Добавление pytest, pytest-dotenv" />
     <MESSAGE value="Изменение параметров на переменные среды" />
-    <option name="LAST_COMMIT_MESSAGE" value="Изменение параметров на переменные среды" />
+    <MESSAGE value="Реализация переменных среды для тестов, скрипт по созданию тестовой БД." />
+    <option name="LAST_COMMIT_MESSAGE" value="Реализация переменных среды для тестов, скрипт по созданию тестовой БД." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/create_test_db.py</url>
-          <line>6</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/tests/conftest.py</url>
+          <line>35</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -740,18 +733,18 @@
     <SUITE FILE_PATH="coverage/fastApiOrders$db_settings.coverage" NAME="db_settings Coverage Results" MODIFIED="1708496899582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/settings" />
     <SUITE FILE_PATH="coverage/fastApiOrders$sql_alchemy.coverage" NAME="sql_alchemy Coverage Results" MODIFIED="1707467154740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/fastApiOrders$main.coverage" NAME="main Coverage Results" MODIFIED="1707912433003" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/fastApiOrders$create_test_db.coverage" NAME="create_test_db Coverage Results" MODIFIED="1708497109831" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/fastApiOrders$create_test_db.coverage" NAME="create_test_db Coverage Results" MODIFIED="1708497307758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/fastApiOrders$consumer.coverage" NAME="consumer Coverage Results" MODIFIED="1708435902096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kafka_layer" />
     <SUITE FILE_PATH="coverage/fastApiOrders$compare_sync_async.coverage" NAME="compare_sync_async Coverage Results" MODIFIED="1707915829667" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/test_real_db" />
     <SUITE FILE_PATH="coverage/fastApiOrders$producer.coverage" NAME="producer Coverage Results" MODIFIED="1708436049524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kafka_layer" />
     <SUITE FILE_PATH="coverage/fastApiOrders$producer__1_.coverage" NAME="producer (1) Coverage Results" MODIFIED="1707904671683" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kafka_layer" />
     <SUITE FILE_PATH="coverage/fastApiOrders$async_repository.coverage" NAME="async_repository Coverage Results" MODIFIED="1707912450003" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apps/user" />
     <SUITE FILE_PATH="coverage/fastApiOrders$sdf.coverage" NAME="sdf Coverage Results" MODIFIED="1708348037903" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apps/items" />
-    <SUITE FILE_PATH="coverage/fastApiOrders$fastApiOrders.coverage" NAME="fastApiOrders Coverage Results" MODIFIED="1708492738907" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/fastApiOrders$fastApiOrders.coverage" NAME="fastApiOrders Coverage Results" MODIFIED="1708502421667" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/fastApiOrders$consumer__1_.coverage" NAME="consumer (1) Coverage Results" MODIFIED="1707899749408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kafka_layer" />
     <SUITE FILE_PATH="coverage/fastApiOrders$measure_sync_time__1_.coverage" NAME="measure_sync_time (1) Coverage Results" MODIFIED="1707916701345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/test_real_db" />
     <SUITE FILE_PATH="coverage/fastApiOrders$measure_async_time.coverage" NAME="measure_async_time Coverage Results" MODIFIED="1707987313188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/test_real_db" />
     <SUITE FILE_PATH="coverage/fastApiOrders$create_db.coverage" NAME="create_db Coverage Results" MODIFIED="1707994481299" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/database/database_utils" />
-    <SUITE FILE_PATH="coverage/fastApiOrders$.coverage" NAME="аа Coverage Results" MODIFIED="1708347976850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apps/items" />
+    <SUITE FILE_PATH="coverage/fastApiOrders$.coverage" NAME=" Coverage Results" MODIFIED="1708503360722" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/users" />
   </component>
 </project>

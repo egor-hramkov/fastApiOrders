@@ -6,6 +6,9 @@
 * применить миграции командой alembic upgrade head
 * Запустить main.py
 
+# Для создания тестовой БД, предварительно настроив .env
+python tests/create_test_db.py
+
 # Разворачивание в докере
 
 * cd docker
