@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Dict
 
 from fastapi import APIRouter, HTTPException
 from apps.user.schemas import UserCreateModel, UserOutModel, UserUpdateModel
@@ -33,7 +33,7 @@ async def get_user(user_id: int) -> Any:
 
 
 @router.delete("/{user_id}")
-async def delete_user(user_id: int) -> None:
+async def delete_user(user_id: int) -> dict[str, str]:
     """Удаление пользователя"""
     await service().delete_user(user_id)
     return {"result": "Пользователь успешно удалён"}
