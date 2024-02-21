@@ -1,11 +1,9 @@
-from pydantic import parse_obj_as
 from sqlalchemy.exc import IntegrityError
 
 from apps.auth.hash_password import HashPassword
-from apps.user import models
 from apps.user.exceptions import UserAlreadyExistsException
 from apps.user.models import User
-from apps.user.schemas import UserCreateModel, UserUpdateModel, UserOutModel, UserWithPW
+from apps.user.schemas import UserCreateModel, UserUpdateModel, UserWithPW
 from apps.user.utils import ExceptionParser
 from apps.utils.helpers import SchemaMapper
 from database.sql_alchemy import async_session
