@@ -11,14 +11,11 @@ producer = KafkaProducer(
 
 def main():
     order = {
-        'user_id': 2,
-        'order_id': 2,
-        'user_email': "test@mail.ru"
+        'order_id': 10,
+        'status': 'in_process'
     }
-    print(f"{producer.bootstrap_connected()=}")
     producer.send(KAFKA_TOPIC, order)
     producer.flush()
-    print("Sent order details {} to kafka topic: {}".format(order, KAFKA_TOPIC))
 
 
 if __name__ == '__main__':
