@@ -1,12 +1,10 @@
-from typing import Annotated, Any, Dict
+from typing import Any
 
 from fastapi import APIRouter, Depends
 from apps.auth.oauth2 import OAuth2
-from apps.orders.enums import OrderStatusEnum
 from apps.orders.schemas import OrderSchema, OrderIn, OrderUpdateSchema
 from apps.orders.service import OrderService
 from apps.user.models import User
-from apps.user.schemas import UserWithPW
 
 router = APIRouter(
     prefix="/orders",

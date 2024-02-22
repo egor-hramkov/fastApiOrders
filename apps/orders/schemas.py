@@ -10,7 +10,7 @@ class OrderSchema(BaseModel):
     """Сущность заказа"""
     model_config = ConfigDict(arbitrary_types_allowed=True)
     id: int = None
-    status: OrderStatusEnum = Field(description="Статус заказа", enum=list(OrderStatusEnum))
+    status: OrderStatusEnum = Field(description="Статус заказа", enum=list(OrderStatusEnum), examples=['created'])
     items: list[ItemSchema] = Field(default_factory=list)
     user: UserOutModel
 
