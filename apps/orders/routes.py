@@ -2,6 +2,7 @@ from typing import Annotated, Any, Dict
 
 from fastapi import APIRouter, Depends
 from apps.auth.oauth2 import OAuth2
+from apps.orders.enums import OrderStatusEnum
 from apps.orders.schemas import OrderSchema, OrderIn, OrderUpdateSchema
 from apps.orders.service import OrderService
 from apps.user.models import User
@@ -36,7 +37,7 @@ async def delete_order(order_id: int, current_user: User = Depends(OAuth2().get_
     return {"result": "Заказ успешно удалён"}
 
 
-@router.put("/{order_id}", response_model=OrderSchema)
+@router.put("/{order_id}", response_model=OrderSchema, tags=["orders"])
 async def update_order(
         order_id: int,
         order: OrderUpdateSchema,

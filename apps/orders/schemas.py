@@ -1,6 +1,7 @@
 from pydantic import BaseModel, Field, ConfigDict
 
 from apps.items.schemas import ItemSchema, ItemInOrder
+from apps.orders.enums import OrderStatusEnum
 from apps.orders.models import Order
 from apps.user.schemas import UserOutModel
 
@@ -9,7 +10,7 @@ class OrderSchema(BaseModel):
     """Сущность заказа"""
     model_config = ConfigDict(arbitrary_types_allowed=True)
     id: int = None
-    status: str
+    status: OrderStatusEnum = Field(description="Статус заказа", enum=list(OrderStatusEnum))
     items: list[ItemSchema] = Field(default_factory=list)
     user: UserOutModel
 
@@ -26,4 +27,4 @@ class OrderIn(BaseModel):
 
 class OrderUpdateSchema(OrderIn):
     """Сущность обновления заказа"""
-    status: str
+    status: OrderStatusEnum = Field(description="Статус заказа", enum=list(OrderStatusEnum))
