@@ -3,7 +3,6 @@ import os
 import pytest
 from dotenv import load_dotenv
 from alembic import command, config
-
 from main import app
 
 load_dotenv()
@@ -22,6 +21,8 @@ def apply_migrations_to_db():
     alembic_config.set_main_option("script_location", migration_path)
     alembic_config.set_main_option("sqlalchemy.url", database_name)
     command.upgrade(alembic_config, "head")
+    yield
+    command.downgrade(alembic_config, "base")
 
 
 @pytest.fixture(scope="session", autouse=True)
