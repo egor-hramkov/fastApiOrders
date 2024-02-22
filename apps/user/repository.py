@@ -1,7 +1,7 @@
 from sqlalchemy.exc import IntegrityError
 
 from apps.auth.hash_password import HashPassword
-from apps.user.exceptions import UserAlreadyExistsException
+from apps.user.exceptions import UserAlreadyExistsException, UserDoesNotExistsException
 from apps.user.models import User
 from apps.user.schemas import UserCreateModel, UserUpdateModel, UserWithPW
 from apps.user.utils import ExceptionParser
@@ -32,6 +32,8 @@ class UserRepository:
             elif username:
                 result = await db.execute(select(User).filter(User.username == username))
         user = result.scalars().first()
+        if user is None:
+            raise UserDoesNotExistsException()
         return user
 
     async def get_user(self, user_id: int = None, email: str = None, username: str = None) -> UserWithPW:
