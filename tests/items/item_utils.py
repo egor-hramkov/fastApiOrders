@@ -1,10 +1,8 @@
-from dataclasses import dataclass
 from decimal import Decimal
 
 from pydantic import BaseModel, Field
 
 
-#@dataclass
 class TestItem(BaseModel):
     """Тестовый класс для товара"""
     id: int = None

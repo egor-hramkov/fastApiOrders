@@ -18,7 +18,5 @@ class TestUserAuth:
             "password": self.user_data['password']
         }
         response = client.post(self.URL_OAUTH, data=data)
-        print(response)
-        print(response.json())
         assert response.status_code == HTTP_200_OK
         assert response.json().get('access_token')

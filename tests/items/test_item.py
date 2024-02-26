@@ -25,10 +25,9 @@ class TestItem:
         response = client.post(self.CREATE_ITEM_URL, json=item_data)
         assert response.status_code == 422
 
-    @pytest.mark.parametrize("create_item", [item_data], indirect=True)
     def test_get_item(self, create_item, client):
         """Тест получения товара"""
-        item = create_item
+        item = create_item(self.item_data)
         response = client.get(self.GET_ITEM_URL + str(item.id))
         assert response.status_code == HTTP_200_OK
         assert response.json()['id'] == item.id

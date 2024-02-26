@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from pydantic import BaseModel
 
 
 def get_test_user_data():
@@ -13,8 +13,7 @@ def get_test_user_data():
     }
 
 
-@dataclass
-class TestUser:
+class TestUser(BaseModel):
     """Тестовый класс для пользователя"""
     id: int = None
     username: str = None
