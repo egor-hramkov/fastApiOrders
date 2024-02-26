@@ -3,7 +3,7 @@ from sqlalchemy.exc import IntegrityError
 from apps.auth.hash_password import HashPassword
 from apps.user.exceptions import UserAlreadyExistsException, UserDoesNotExistsException
 from apps.user.models import User
-from apps.user.schemas import UserCreateModel, UserUpdateModel, UserWithPW
+from apps.user.schemas import UserCreateModel, UserUpdateModel, UserOutModel
 from apps.user.utils import ExceptionParser
 from apps.utils.helpers import SchemaMapper
 from database.sql_alchemy import async_session
@@ -36,10 +36,10 @@ class UserRepository:
             raise UserDoesNotExistsException()
         return user
 
-    async def get_user(self, user_id: int = None, email: str = None, username: str = None) -> UserWithPW:
+    async def get_user(self, user_id: int = None, email: str = None, username: str = None) -> UserOutModel:
         """Получение пользователя"""
         user = await self.get_raw_user(user_id, email, username)
-        return UserWithPW.model_validate(user, from_attributes=True)
+        return UserOutModel.model_validate(user, from_attributes=True)
 
     async def create(self, user_data: UserCreateModel) -> User:
         """Создание пользователя"""

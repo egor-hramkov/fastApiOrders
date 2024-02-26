@@ -4,18 +4,18 @@ from starlette import status
 
 from apps.auth.oauth2 import OAuth2
 from apps.auth.hash_password import HashPassword
-from apps.user.service import UserService
+from apps.user.repository import UserRepository
 
 router = APIRouter(
     prefix="/auth",
     tags=["auth"]
 )
-user_service = UserService()
+user_repository = UserRepository()
 
 
 @router.post('/token')
 async def get_token(request: OAuth2PasswordRequestForm = Depends()):
-    user = await user_service.get_user(username=request.username)
+    user = await user_repository.get_raw_user(username=request.username)
 
     if not user:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='Invalid credentials')

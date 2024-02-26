@@ -1,6 +1,6 @@
 from apps.user.models import User
 from apps.user.repository import UserRepository
-from apps.user.schemas import UserCreateModel, UserUpdateModel, UserWithPW
+from apps.user.schemas import UserCreateModel, UserUpdateModel, UserOutModel
 
 
 class UserService:
@@ -11,7 +11,7 @@ class UserService:
         all_users = await self.repository().get_all_users()
         return all_users
 
-    async def get_user(self, user_id: int = None, email: str = None, username: str = None) -> UserWithPW:
+    async def get_user(self, user_id: int = None, email: str = None, username: str = None) -> UserOutModel:
         user = await self.repository().get_user(user_id, email, username)
         return user
 
