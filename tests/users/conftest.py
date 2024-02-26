@@ -8,7 +8,10 @@ DELETE_URL = "/user/"
 
 @pytest.fixture(scope="function")
 def create_user(request, client) -> TestUser:
-    """Фикстура создания пользователя"""
+    """
+    Фикстура создания пользователя.
+    Вызывается после каждой функции, создаёт пользователя и после логики тестовой функции - удаляет его
+    """
     user_data = request.param
     response = client.post(REGISTER_URL, json=user_data)
     assert response.status_code == 200
