@@ -20,9 +20,10 @@ async def listen():
         order_data = msg.value
         try:
             await OrderService().update_order_status(order_data['order_id'], order_data['status'])
-            print(f"Статус заказа {order_data['order_id']} изменён на {order_data['status']}")
         except:
             print(f"Что-то пошло не так при изменении статуса заказа")
+        else:
+            print(f"Статус заказа {order_data['order_id']} изменён на {order_data['status']}")
         try:
             consumer.commit()
         except kafka_errors.CommitFailedError:

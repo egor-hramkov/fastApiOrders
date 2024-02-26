@@ -20,4 +20,3 @@ executor = pool.ThreadPoolExecutor(max_workers=1)
 @app.on_event("startup")
 async def startup_event():
     executor.submit(run_consumer)
-    ...
