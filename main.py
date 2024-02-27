@@ -4,8 +4,9 @@ from apps.user import routes as user_routes
 from apps.auth import routes as auth_routes
 from apps.items import routes as item_routes
 from apps.orders import routes as order_routes
-from kafka_layer.consumer import run_consumer
 import concurrent.futures as pool
+
+from kafka_layer.consumer.consumer_listener import run_consumer
 
 app = FastAPI()
 

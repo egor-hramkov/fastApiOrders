@@ -1,7 +1,7 @@
 import concurrent.futures as pool
 from multiprocessing import Process
 
-from kafka_layer.consumer import run_consumer
+from kafka_layer.consumer.consumer_listener import run_consumer
 
 
 class MockConsumer:
