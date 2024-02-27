@@ -36,6 +36,7 @@ async def get_user(user_id: int) -> Any:
 async def delete_user(user_id: int) -> dict[str, str]:
     """Удаление пользователя"""
     await service().delete_user(user_id)
+    # лучше подобные словари хранить в отдельном файле, чтобы их можно было переиспользовать и удобно изменять
     return {"result": "Пользователь успешно удалён"}
 
 

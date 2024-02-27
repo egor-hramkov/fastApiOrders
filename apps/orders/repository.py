@@ -39,6 +39,7 @@ class OrderRepository:
 
     async def create(self, order: OrderIn, user_id: int) -> OrderSchema:
         """Создание заказа"""
+        # new_order = Order(status=OrderStatusEnum.created, user_id=user_id)
         new_order = Order()
         new_order.status = OrderStatusEnum.created
         new_order.user_id = user_id
@@ -67,6 +68,8 @@ class OrderRepository:
         ids2 = set(item.id for item in order_data.items)
         items_ids_to_add = ids2 - ids
         items_ids_to_delete = ids - ids2
+        # думаю, лучше проверить наличие товаров, а потом уже выполнить корутины: не хотелось бы, чтобы EL тратил
+        # время на переключение контекста на корутины
         await self.add_items_in_order(order.id, items_ids_to_add)
         await self.remove_items_in_order(order.id, items_ids_to_delete)
         return await self.__build_order(order)
@@ -103,6 +106,7 @@ class OrderRepository:
     async def __build_items_links_to_order(self, items: list[ItemSchema], order_id: int) -> list[OrderItem]:
         """Создает сущности связки товар-заказ"""
         items_in_order: list[OrderItem] = []
+        # чисто рекомендация: можно попробовать заменить цикл for списком включением
         for item in items:
             item_in_order = OrderItem()
             item_in_order.order_id = order_id

@@ -35,7 +35,7 @@ class OAuth2:
             raise credentials_exception
 
         # TODO: check if token expires
-
+        # у тебя остался "туду". Просто забыл?
         user = await self._user_repository.get_user(username=decode_username)
 
         if user is None:

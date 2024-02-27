@@ -5,6 +5,12 @@ from apps.user.schemas import UserCreateModel, UserUpdateModel, UserOutModel
 
 class UserService:
     """Сервис для работы с пользователем"""
+    # по моему мнению, лучше переопределить метод __init__:
+    """
+        def __init__(self):
+            self.repository = UserRepository()
+    """
+    # так мы не будем порождать новые экземпляры класса UserRepository, а будем использовать уже существующий
     repository = UserRepository
 
     async def get_all_users(self) -> list[User]:

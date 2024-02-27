@@ -2,12 +2,10 @@ from sqlalchemy import NullPool
 from sqlalchemy.ext.asyncio import AsyncSession, AsyncEngine, async_sessionmaker
 from sqlalchemy.ext.asyncio import create_async_engine
 
-from apps.orders.models import Order
-from apps.items.models import Item
-from apps.user.models import User
 from database.base_models import Base
 from settings.db_settings import DB_SETTINGS
 
+# лучше замени на get, чтобы можно было обработать возможное отсуствие значения по ключу
 user = DB_SETTINGS['USER']
 password = DB_SETTINGS['PASSWORD']
 host = DB_SETTINGS['HOST']

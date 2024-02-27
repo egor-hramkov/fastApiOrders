@@ -32,6 +32,7 @@ async def create_order(order: OrderIn, current_user: UserOutModel = Depends(OAut
 async def delete_order(order_id: int, current_user: UserOutModel = Depends(OAuth2().get_current_user)) -> dict[str, str]:
     """Обновление заказа"""
     await service.delete_order(order_id)
+    # лучше подобные словари хранить в отдельном файле, чтобы их можно было переиспользовать и удобно изменять
     return {"result": "Заказ успешно удалён"}
 
 

@@ -4,6 +4,7 @@ from sqlalchemy.exc import IntegrityError
 class ExceptionParser:
     """Вспомогательный парсер для ошибок"""
 
+    # лучше объединить методы, так как у тебя идёт дублирование кода. Или можно воспользоваться наследованием.
     @staticmethod
     def parse_user_unique_exception(e: IntegrityError) -> str:
         """Получение значения, которое нарушает уникальность"""

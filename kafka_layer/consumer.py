@@ -19,6 +19,7 @@ async def listen():
     for msg in consumer:
         order_data = msg.value
         try:
+            # лучше создать один экземпляр класса OrderService и работать с ним, иначе ты каждый раз порождаешь новый экземпляр
             await OrderService().update_order_status(order_data['order_id'], order_data['status'])
         except Exception as e:
             print(f"Что-то пошло не так при изменении статуса заказа: " + str(e))
