@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="515b7096-2419-4f30-a1c2-7ebdc3e999c5" name="Changes" comment="adding .idea .venv in a gitignore">
+    <list default="true" id="515b7096-2419-4f30-a1c2-7ebdc3e999c5" name="Changes" comment="pytest-mock в зависимости">
+      <change afterPath="$PROJECT_DIR$/apps/notifications/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/notifications/routes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/notifications/schemas.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/notifications/service.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings/email_settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/auth/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/auth/exceptions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/auth/oauth2.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/auth/oauth2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings/auth_settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings/auth_settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,60 +58,60 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "FastAPI.fastApiOrders.executor": "Run",
-    "Python tests.Python tests for test_auth.test_sum.executor": "Run",
-    "Python tests.Python tests for test_register.TestUserRegister.executor": "Run",
-    "Python tests.Python tests for test_register.TestUserRegister.test_create_user.executor": "Run",
-    "Python tests.Python tests for test_register.TestUserRegister.test_get_all.executor": "Run",
-    "Python tests.Python tests for test_register.TestUserRegister.test_get_users.executor": "Run",
-    "Python tests.Python tests for test_register.TestUserRegister.test_register.executor": "Debug",
-    "Python tests.Python tests for test_register.test_get_all.executor": "Run",
-    "Python tests.Python tests for test_register.test_get_users.executor": "Run",
-    "Python tests.Python tests in conftest.py.executor": "Run",
-    "Python tests.pytest for test_create_order.TestCreateOrder.executor": "Run",
-    "Python tests.pytest for test_get_order.TestGetOrder.executor": "Run",
-    "Python tests.pytest for test_get_order.TestGetOrder.test_get_order.executor": "Debug",
-    "Python tests.pytest for test_item.TestItem.executor": "Run",
-    "Python tests.pytest for test_item.TestItem.test_get_item.executor": "Run",
-    "Python tests.pytest for test_kafka_status_change.TestKafkaLayer.executor": "Run",
-    "Python tests.pytest for test_kafka_status_change.TestOrderStatus.executor": "Run",
-    "Python tests.pytest for test_register.TestUserRegister.executor": "Run",
-    "Python tests.pytest for test_register.TestUserRegister.test_register.executor": "Run",
-    "Python tests.pytest for test_user_auth.TestUserAuth.executor": "Run",
-    "Python tests.pytest for test_user_auth.TestUserAuth.test_get_all_users.executor": "Run",
-    "Python tests.pytest for test_user_auth.TestUserAuth.test_get_user.executor": "Run",
-    "Python tests.pytest for test_user_auth.TestUserAuth.test_user_auth.executor": "Run",
-    "Python.async_repository.executor": "Run",
-    "Python.compare_sync_async.executor": "Run",
-    "Python.consumer (1).executor": "Run",
-    "Python.consumer.executor": "Run",
-    "Python.create_db.executor": "Run",
-    "Python.create_test_db.executor": "Run",
-    "Python.db_settings.executor": "Debug",
-    "Python.main.executor": "Run",
-    "Python.measure_async_time.executor": "Run",
-    "Python.measure_sync_time (1).executor": "Run",
-    "Python.producer (1).executor": "Run",
-    "Python.producer.executor": "Run",
-    "Python.pytest_tests.executor": "Run",
-    "Python.sdf.executor": "Run",
-    "Python.sql_alchemy.executor": "Run",
-    "Python.аа.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/my_projects/fastApiOrders/apps/utils/exception_parser.py",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;FastAPI.fastApiOrders.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_auth.test_sum.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_register.TestUserRegister.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_register.TestUserRegister.test_create_user.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_register.TestUserRegister.test_get_all.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_register.TestUserRegister.test_get_users.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_register.TestUserRegister.test_register.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests for test_register.test_get_all.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_register.test_get_users.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in conftest.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for test_create_order.TestCreateOrder.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for test_get_order.TestGetOrder.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for test_get_order.TestGetOrder.test_get_order.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for test_item.TestItem.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for test_item.TestItem.test_get_item.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for test_kafka_status_change.TestKafkaLayer.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for test_kafka_status_change.TestOrderStatus.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for test_register.TestUserRegister.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for test_register.TestUserRegister.test_register.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for test_user_auth.TestUserAuth.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for test_user_auth.TestUserAuth.test_get_all_users.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for test_user_auth.TestUserAuth.test_get_user.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for test_user_auth.TestUserAuth.test_user_auth.executor&quot;: &quot;Run&quot;,
+    &quot;Python.async_repository.executor&quot;: &quot;Run&quot;,
+    &quot;Python.compare_sync_async.executor&quot;: &quot;Run&quot;,
+    &quot;Python.consumer (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.consumer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.create_db.executor&quot;: &quot;Run&quot;,
+    &quot;Python.create_test_db.executor&quot;: &quot;Run&quot;,
+    &quot;Python.db_settings.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.measure_async_time.executor&quot;: &quot;Run&quot;,
+    &quot;Python.measure_sync_time (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.producer (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.producer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pytest_tests.executor&quot;: &quot;Run&quot;,
+    &quot;Python.sdf.executor&quot;: &quot;Run&quot;,
+    &quot;Python.sql_alchemy.executor&quot;: &quot;Run&quot;,
+    &quot;Python.аа.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Егор/Downloads/Telegram Desktop/изменение_схемки.patch&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\my_projects\fastApiOrders\kafka" />
@@ -114,15 +119,15 @@
       <recent name="C:\my_projects\fastApiOrders\apps\auth" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\my_projects\fastApiOrders\kafka_layer\producer" />
-      <recent name="C:\my_projects\fastApiOrders\kafka_layer\consumer" />
       <recent name="C:\my_projects\fastApiOrders\tests" />
       <recent name="C:\my_projects\fastApiOrders\apps\orders" />
       <recent name="C:\my_projects\fastApiOrders\apps\items" />
+      <recent name="C:\my_projects\fastApiOrders\apps\orders\repositories" />
+      <recent name="C:\my_projects\fastApiOrders\apps\orders\services" />
     </key>
   </component>
   <component name="RunManager" selected="FastAPI.fastApiOrders">
-    <configuration name="producer_pusher" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="producer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="fastApiOrders" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -136,7 +141,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\my_projects\fastApiOrders\kafka_layer\producer\producer_pusher.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/kafka_layer/producer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -245,7 +250,7 @@
     </configuration>
     <list>
       <item itemvalue="FastAPI.fastApiOrders" />
-      <item itemvalue="Python.producer_pusher" />
+      <item itemvalue="Python.producer" />
       <item itemvalue="Python tests.pytest for test_kafka_status_change.TestKafkaLayer" />
       <item itemvalue="Python tests.pytest for tests.integrations.test_kafka_status_change.TestKafkaLayer" />
       <item itemvalue="Python tests.pytest for test_get_order.TestGetOrder" />
@@ -253,11 +258,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest for test_get_order.TestGetOrder.test_get_order" />
-        <item itemvalue="Python tests.pytest for test_get_order.TestGetOrder" />
-        <item itemvalue="Python tests.pytest for tests.integrations.test_kafka_status_change.TestKafkaLayer" />
         <item itemvalue="Python tests.pytest for test_kafka_status_change.TestKafkaLayer" />
-        <item itemvalue="Python.producer_pusher" />
+        <item itemvalue="Python tests.pytest for tests.integrations.test_kafka_status_change.TestKafkaLayer" />
+        <item itemvalue="Python.producer" />
+        <item itemvalue="Python tests.pytest for test_get_order.TestGetOrder" />
+        <item itemvalue="Python tests.pytest for test_get_order.TestGetOrder.test_get_order" />
       </list>
     </recent_temporary>
   </component>
@@ -293,15 +298,7 @@
       <workItem from="1708519365565" duration="4062000" />
       <workItem from="1708578952944" duration="21540000" />
       <workItem from="1708925090313" duration="18364000" />
-      <workItem from="1709010916563" duration="1959000" />
-    </task>
-    <task id="LOCAL-00020" summary="лишний принт">
-      <option name="closed" value="true" />
-      <created>1707745049521</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1707745049521</updated>
+      <workItem from="1709010916563" duration="5602000" />
     </task>
     <task id="LOCAL-00021" summary="Правки по ревью кода">
       <option name="closed" value="true" />
@@ -671,23 +668,31 @@
       <option name="project" value="LOCAL" />
       <updated>1709012759055</updated>
     </task>
-    <task id="LOCAL-00067" summary="Рефакторинг кафка консумера и продюсера">
+    <task id="LOCAL-00067" summary="Написаны тест для кафки на изменение статуса заказа">
       <option name="closed" value="true" />
-      <created>1709019429737</created>
+      <created>1709012984359</created>
       <option name="number" value="00067" />
       <option name="presentableId" value="LOCAL-00067" />
       <option name="project" value="LOCAL" />
-      <updated>1709019429737</updated>
+      <updated>1709012984359</updated>
     </task>
-    <task id="LOCAL-00068" summary="adding .idea .venv in a gitignore">
+    <task id="LOCAL-00068" summary="фикстура для заказов">
       <option name="closed" value="true" />
-      <created>1709019461144</created>
+      <created>1709013020497</created>
       <option name="number" value="00068" />
       <option name="presentableId" value="LOCAL-00068" />
       <option name="project" value="LOCAL" />
-      <updated>1709019461144</updated>
+      <updated>1709013020497</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="pytest-mock в зависимости">
+      <option name="closed" value="true" />
+      <created>1709013046902</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1709013046902</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -711,7 +716,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Код-рефакторинг, сериализация значений репозитория пользователя, оптимизация методов delete" />
     <MESSAGE value="Настроено каскадное удаление связок товар-заказ, при удалении заказа" />
     <MESSAGE value="Добавление кастомных ошибок в репозиторий Заказов" />
     <MESSAGE value="Реализация обновления заказа, вынесение общего кода по фунцкиям, написание метакласса для енама" />
@@ -734,22 +738,18 @@
     <MESSAGE value="Написание фикстур пайтестов с замыканием, написание фикстур для регистрации общего тестового пользователя, живущего по всей сессии тестов, написание фикстуры по получению готового access token" />
     <MESSAGE value="Fix consumer kafka" />
     <MESSAGE value="Вывод ошибки в консумере" />
-    <MESSAGE value="Рефакторинг кафка консумера и продюсера" />
-    <MESSAGE value="adding .idea .venv in a gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding .idea .venv in a gitignore" />
+    <MESSAGE value="Написаны тест для кафки на изменение статуса заказа" />
+    <MESSAGE value="фикстура для заказов" />
+    <MESSAGE value="pytest-mock в зависимости" />
+    <option name="LAST_COMMIT_MESSAGE" value="pytest-mock в зависимости" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/apps/orders/routes.py</url>
-          <line>27</line>
+          <line>26</line>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/apps/auth/exceptions.py</url>
-          <line>16</line>
-          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -765,7 +765,7 @@
     <SUITE FILE_PATH="coverage/fastApiOrders$pytest_for_test_user_auth_TestUserAuth_test_user_auth.coverage" NAME="pytest for test_user_auth.TestUserAuth.test_user_auth Coverage Results" MODIFIED="1708599744186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/users" />
     <SUITE FILE_PATH="coverage/fastApiOrders$producer.coverage" NAME="producer Coverage Results" MODIFIED="1708951986603" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kafka_layer" />
     <SUITE FILE_PATH="coverage/fastApiOrders$pytest_for_test_register_TestUserRegister_test_register.coverage" NAME="pytest for test_register.TestUserRegister.test_register Coverage Results" MODIFIED="1708597385797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/users" />
-    <SUITE FILE_PATH="coverage/fastApiOrders$fastApiOrders.coverage" NAME="fastApiOrders Coverage Results" MODIFIED="1709037224224" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/fastApiOrders$fastApiOrders.coverage" NAME="fastApiOrders Coverage Results" MODIFIED="1709039901473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/fastApiOrders$consumer__1_.coverage" NAME="consumer (1) Coverage Results" MODIFIED="1707899749408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kafka_layer" />
     <SUITE FILE_PATH="coverage/fastApiOrders$measure_sync_time__1_.coverage" NAME="measure_sync_time (1) Coverage Results" MODIFIED="1707916701345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/test_real_db" />
     <SUITE FILE_PATH="coverage/fastApiOrders$measure_async_time.coverage" NAME="measure_async_time Coverage Results" MODIFIED="1707987313188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/test_real_db" />
