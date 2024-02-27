@@ -9,6 +9,4 @@ EMAIL_SETTINGS = {
     "MAIL_PASSWORD": os.environ.get('MAIL_PASSWORD'),
     "MAIL_PORT": os.environ.get('MAIL_PORT', 587),
     "MAIL_SERVER": os.environ.get('MAIL_SERVER', "smtp.gmail.com"),
-    "MAIL_TLS": os.environ.get('MAIL_TLS', True),
-    "MAIL_SSL": os.environ.get('MAIL_SSL', False)
 }
