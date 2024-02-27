@@ -5,12 +5,15 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from apps.items.repository import ItemRepository
 from apps.items.schemas import ItemSchema
 from apps.orders.enums import OrderStatusEnum
-from apps.orders.exceptions import OrderAlreadyExistsException, OrderDoesNotExistsException, \
+from apps.orders.exceptions import (
+    OrderAlreadyExistsException,
+    OrderDoesNotExistsException,
     StatusDoesNotExistsException
+)
 from apps.orders.models import Order, OrderItem
 from apps.orders.schemas import OrderSchema, OrderIn, OrderUpdateSchema
 from apps.user.repository import UserRepository
-from apps.user.utils import ExceptionParser
+from apps.utils.exception_parser import ExceptionParser
 from database.sql_alchemy import async_session
 
 
@@ -39,9 +42,7 @@ class OrderRepository:
 
     async def create(self, order: OrderIn, user_id: int) -> OrderSchema:
         """Создание заказа"""
-        new_order = Order()
-        new_order.status = OrderStatusEnum.created
-        new_order.user_id = user_id
+        new_order = Order(status=OrderStatusEnum.created, user_id=user_id)
         await self.__save_order(new_order)
         await self.__prepare_items_in_order(order, new_order.id)
         built_order = await self.__build_order(new_order)
@@ -59,17 +60,17 @@ class OrderRepository:
         order = await self.get_raw_order(order_id)
         await self.update_order_status(order_id, order_data.status)
         await self.__save_order(order)
-        async with self.session() as db:
-            stmt = select(OrderItem).where(OrderItem.order_id == order_id)
-            result = await db.execute(stmt)
-        items_in_order = result.scalars().all()
-        ids = set(item.item_id for item in items_in_order)
-        ids2 = set(item.id for item in order_data.items)
-        items_ids_to_add = ids2 - ids
-        items_ids_to_delete = ids - ids2
+
+        new_order_items_ids = set(item.id for item in order_data.items)
+        new_order_items = await self._item_repository.get_items(new_order_items_ids)
+
+        items_in_order: list[ItemSchema] = await self.__get_order_items(order_id)
+        old_order_items_ids = set(item.id for item in items_in_order)
+        items_ids_to_add = new_order_items_ids - old_order_items_ids
+        items_ids_to_delete = old_order_items_ids - new_order_items_ids
         await self.add_items_in_order(order.id, items_ids_to_add)
         await self.remove_items_in_order(order.id, items_ids_to_delete)
-        return await self.__build_order(order)
+        return await self.__build_order(order, new_order_items)
 
     async def add_items_in_order(self, order_id: int, items_ids: list | set) -> None:
         """Добавляет товары в заказ"""
@@ -81,7 +82,9 @@ class OrderRepository:
     async def remove_items_in_order(self, order_id: int, items_ids: list | set) -> None:
         """Удаляет товары из заказа"""
         async with self.session() as db:
-            statement = delete(OrderItem).where(OrderItem.item_id.in_(items_ids), OrderItem.order_id == order_id)
+            statement = delete(OrderItem).where(
+                OrderItem.item_id.in_(items_ids), OrderItem.order_id == order_id
+            )
             await db.execute(statement)
             await db.commit()
 
@@ -93,21 +96,17 @@ class OrderRepository:
         order.status = new_status
         await self.__save_order(order)
 
-    async def __build_order(self, order: Order) -> OrderSchema:
+    async def __build_order(self, order: Order, items: list[ItemSchema] = None) -> OrderSchema:
         """Собирает информацию о заказе"""
         user = await self._user_repository.get_user(order.user_id)
-        items = await self.__get_order_items(order.id)
+        if items is None:
+            items = await self.__get_order_items(order.id)
         order_data = await OrderSchema.build_order_schema(order, user, items)
         return order_data
 
     async def __build_items_links_to_order(self, items: list[ItemSchema], order_id: int) -> list[OrderItem]:
         """Создает сущности связки товар-заказ"""
-        items_in_order: list[OrderItem] = []
-        for item in items:
-            item_in_order = OrderItem()
-            item_in_order.order_id = order_id
-            item_in_order.item_id = item.id
-            items_in_order.append(item_in_order)
+        items_in_order = [OrderItem(order_id=order_id, item_id=item.id) for item in items]
         return items_in_order
 
     async def __save_order(self, order: Order):
@@ -118,7 +117,7 @@ class OrderRepository:
                 await db.commit()
                 await db.refresh(order)
             except IntegrityError as e:
-                value = ExceptionParser.parse_order_unique_exception(e)
+                value = ExceptionParser.parse_unique_exception(e, ['id'])
                 raise OrderAlreadyExistsException(value)
 
     async def __get_order_items(self, order_id: int) -> list[ItemSchema]:

@@ -3,30 +3,31 @@ from typing import Any, Dict
 from fastapi import APIRouter, HTTPException
 from apps.user.schemas import UserCreateModel, UserOutModel, UserUpdateModel
 from apps.user.service import UserService
+from apps.user.utils import USER_RESPONSE
 
 router = APIRouter(
     prefix="/user",
     tags=["user"]
 )
-service = UserService
+service = UserService()
 
 
 @router.get('/all', response_model=list[UserOutModel])
 async def get_all_users() -> Any:
-    all_users = await service().get_all_users()
+    all_users = await service.get_all_users()
     return all_users
 
 
 @router.post('/register', response_model=UserOutModel)
 async def register(user_data: UserCreateModel) -> Any:
-    user = await service().create_user(user_data)
+    user = await service.create_user(user_data)
     return user
 
 
 @router.get("/{user_id}", response_model=UserOutModel)
 async def get_user(user_id: int) -> Any:
     """Получение информации по пользователю"""
-    user = await service().get_user(user_id)
+    user = await service.get_user(user_id)
     if not user:
         raise HTTPException(status_code=404, detail='Пользователь с такими данными не найден')
     return user
@@ -35,8 +36,8 @@ async def get_user(user_id: int) -> Any:
 @router.delete("/{user_id}")
 async def delete_user(user_id: int) -> dict[str, str]:
     """Удаление пользователя"""
-    await service().delete_user(user_id)
-    return {"result": "Пользователь успешно удалён"}
+    await service.delete_user(user_id)
+    return USER_RESPONSE['OK_DELETE_RESPONSE']
 
 
 @router.put("/{user_id}", response_model=UserOutModel)

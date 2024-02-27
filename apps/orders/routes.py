@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends
 from apps.auth.oauth2 import OAuth2
 from apps.orders.schemas import OrderSchema, OrderIn, OrderUpdateSchema
 from apps.orders.service import OrderService
+from apps.orders.utils import ORDER_RESPONSE
 from apps.user.schemas import UserOutModel
 
 router = APIRouter(
@@ -29,10 +30,13 @@ async def create_order(order: OrderIn, current_user: UserOutModel = Depends(OAut
 
 
 @router.delete("/{order_id}")
-async def delete_order(order_id: int, current_user: UserOutModel = Depends(OAuth2().get_current_user)) -> dict[str, str]:
-    """Обновление заказа"""
+async def delete_order(
+        order_id: int,
+        current_user: UserOutModel = Depends(OAuth2().get_current_user),
+) -> dict[str, str]:
+    """Удаление заказа"""
     await service.delete_order(order_id)
-    return {"result": "Заказ успешно удалён"}
+    return ORDER_RESPONSE['OK_DELETE_RESPONSE']
 
 
 @router.put("/{order_id}", response_model=OrderSchema, tags=["orders"])

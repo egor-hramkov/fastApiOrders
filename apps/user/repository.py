@@ -4,7 +4,7 @@ from apps.auth.hash_password import HashPassword
 from apps.user.exceptions import UserAlreadyExistsException, UserDoesNotExistsException
 from apps.user.models import User
 from apps.user.schemas import UserCreateModel, UserUpdateModel, UserOutModel
-from apps.user.utils import ExceptionParser
+from apps.utils.exception_parser import ExceptionParser
 from apps.utils.helpers import SchemaMapper
 from database.sql_alchemy import async_session
 
@@ -70,7 +70,7 @@ class UserRepository:
                 await db.commit()
                 await db.refresh(user)
             except IntegrityError as e:
-                value = ExceptionParser.parse_user_unique_exception(e)
+                value = ExceptionParser.parse_unique_exception(e, ['username', 'email', 'id'])
                 raise UserAlreadyExistsException(value)
 
     async def __build_user(self, user_data: UserCreateModel | UserUpdateModel, user_id: int = None) -> User:
