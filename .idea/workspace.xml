@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="515b7096-2419-4f30-a1c2-7ebdc3e999c5" name="Changes" comment="Написание фикстур пайтестов с замыканием, написание фикстур для регистрации общего тестового пользователя, живущего по всей сессии тестов, написание фикстуры по получению готового access token">
+    <list default="true" id="515b7096-2419-4f30-a1c2-7ebdc3e999c5" name="Changes" comment="Вывод ошибки в консумере">
+      <change afterPath="$PROJECT_DIR$/tests/integrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/integrations/conftest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/integrations/test_kafka_status_change.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pytest.ini" beforeDir="false" afterPath="$PROJECT_DIR$/pytest.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/orders/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/orders/conftest.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +72,8 @@
     "Python tests.pytest for test_get_order.TestGetOrder.test_get_order.executor": "Debug",
     "Python tests.pytest for test_item.TestItem.executor": "Run",
     "Python tests.pytest for test_item.TestItem.test_get_item.executor": "Run",
+    "Python tests.pytest for test_kafka_status_change.TestKafkaLayer.executor": "Run",
+    "Python tests.pytest for test_kafka_status_change.TestOrderStatus.executor": "Run",
     "Python tests.pytest for test_register.TestUserRegister.executor": "Run",
     "Python tests.pytest for test_register.TestUserRegister.test_register.executor": "Run",
     "Python tests.pytest for test_user_auth.TestUserAuth.executor": "Run",
@@ -117,7 +123,7 @@
       <recent name="C:\my_projects\fastApiOrders\apps\orders\services" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.producer">
+  <component name="RunManager" selected="Python tests.pytest for test_kafka_status_change.TestKafkaLayer">
     <configuration name="producer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="fastApiOrders" />
       <option name="ENV_FILES" value="" />
@@ -157,24 +163,6 @@
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_create_order.TestCreateOrder" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="fastApiOrders" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/orders" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_create_order.TestCreateOrder&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="pytest for test_get_order.TestGetOrder" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="fastApiOrders" />
       <option name="ENV_FILES" value="" />
@@ -211,13 +199,13 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_item.TestItem" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_kafka_status_change.TestKafkaLayer" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="fastApiOrders" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/items" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/integrations" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -225,25 +213,53 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_item.TestItem&quot;" />
+      <option name="_new_target" value="&quot;test_kafka_status_change.TestKafkaLayer&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for tests.integrations.test_kafka_status_change.TestKafkaLayer" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="fastApiOrders" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/integrations" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </EXTENSION>
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;-vv -s&quot;" />
+      <option name="_new_target" value="&quot;tests.integrations.test_kafka_status_change.TestKafkaLayer&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="FastAPI.fastApiOrders" />
       <item itemvalue="Python.producer" />
-      <item itemvalue="Python tests.pytest for test_create_order.TestCreateOrder" />
+      <item itemvalue="Python tests.pytest for test_kafka_status_change.TestKafkaLayer" />
+      <item itemvalue="Python tests.pytest for tests.integrations.test_kafka_status_change.TestKafkaLayer" />
       <item itemvalue="Python tests.pytest for test_get_order.TestGetOrder" />
       <item itemvalue="Python tests.pytest for test_get_order.TestGetOrder.test_get_order" />
-      <item itemvalue="Python tests.pytest for test_item.TestItem" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.pytest for test_kafka_status_change.TestKafkaLayer" />
+        <item itemvalue="Python tests.pytest for tests.integrations.test_kafka_status_change.TestKafkaLayer" />
         <item itemvalue="Python.producer" />
         <item itemvalue="Python tests.pytest for test_get_order.TestGetOrder" />
         <item itemvalue="Python tests.pytest for test_get_order.TestGetOrder.test_get_order" />
-        <item itemvalue="Python tests.pytest for test_create_order.TestCreateOrder" />
-        <item itemvalue="Python tests.pytest for test_item.TestItem" />
       </list>
     </recent_temporary>
   </component>
@@ -278,23 +294,8 @@
       <workItem from="1708519075383" duration="217000" />
       <workItem from="1708519365565" duration="4062000" />
       <workItem from="1708578952944" duration="21540000" />
-      <workItem from="1708925090313" duration="9381000" />
-    </task>
-    <task id="LOCAL-00016" summary="КРУДы по пользователю">
-      <option name="closed" value="true" />
-      <created>1707736282086</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1707736282086</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Эндпоинт по получению всех пользователей">
-      <option name="closed" value="true" />
-      <created>1707739071528</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1707739071528</updated>
+      <workItem from="1708925090313" duration="18364000" />
+      <workItem from="1709010916563" duration="1959000" />
     </task>
     <task id="LOCAL-00018" summary="Добавлен .gitignore">
       <option name="closed" value="true" />
@@ -672,7 +673,23 @@
       <option name="project" value="LOCAL" />
       <updated>1708944814619</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Fix consumer kafka">
+      <option name="closed" value="true" />
+      <created>1708946243098</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1708946243098</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Вывод ошибки в консумере">
+      <option name="closed" value="true" />
+      <created>1709012759055</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1709012759055</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -696,8 +713,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Написание крудов для заказа, добавление сериализации в репозитории, переписывание схем" />
-    <MESSAGE value="Удаление лишних схем" />
     <MESSAGE value="Добавление сериализации в репозитории Item" />
     <MESSAGE value="Код рефакторинг" />
     <MESSAGE value="Код-рефакторинг, сериализация значений репозитория пользователя, оптимизация методов delete" />
@@ -721,7 +736,9 @@
     <MESSAGE value="Написаны тесты для приложения items" />
     <MESSAGE value="Изменение типизации и возвращаемых моделей пользователя" />
     <MESSAGE value="Написание фикстур пайтестов с замыканием, написание фикстур для регистрации общего тестового пользователя, живущего по всей сессии тестов, написание фикстуры по получению готового access token" />
-    <option name="LAST_COMMIT_MESSAGE" value="Написание фикстур пайтестов с замыканием, написание фикстур для регистрации общего тестового пользователя, живущего по всей сессии тестов, написание фикстуры по получению готового access token" />
+    <MESSAGE value="Fix consumer kafka" />
+    <MESSAGE value="Вывод ошибки в консумере" />
+    <option name="LAST_COMMIT_MESSAGE" value="Вывод ошибки в консумере" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -736,20 +753,22 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/fastApiOrders$pytest_for_test_item_TestItem_test_get_item.coverage" NAME="pytest for test_item.TestItem.test_get_item Coverage Results" MODIFIED="1708941089837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/items" />
+    <SUITE FILE_PATH="coverage/fastApiOrders$pytest_for_test_kafka_status_change_TestOrderStatus.coverage" NAME="pytest for test_kafka_status_change.TestOrderStatus Coverage Results" MODIFIED="1709012707683" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/integrations" />
     <SUITE FILE_PATH="coverage/fastApiOrders$pytest_for_test_get_order_TestGetOrder_test_get_order.coverage" NAME="pytest for test_get_order.TestGetOrder.test_get_order Coverage Results" MODIFIED="1708944098512" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/orders" />
-    <SUITE FILE_PATH="coverage/fastApiOrders$sql_alchemy.coverage" NAME="sql_alchemy Coverage Results" MODIFIED="1707467154740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/fastApiOrders$main.coverage" NAME="main Coverage Results" MODIFIED="1708516708292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/fastApiOrders$sql_alchemy.coverage" NAME="sql_alchemy Coverage Results" MODIFIED="1707467154740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/fastApiOrders$create_test_db.coverage" NAME="pytest_tests Coverage Results" MODIFIED="1708589794076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/fastApiOrders$pytest_for_test_user_auth_TestUserAuth_test_get_user.coverage" NAME="pytest for test_user_auth.TestUserAuth.test_get_user Coverage Results" MODIFIED="1708591442914" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/users" />
-    <SUITE FILE_PATH="coverage/fastApiOrders$producer.coverage" NAME="producer Coverage Results" MODIFIED="1708436049524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kafka_layer" />
     <SUITE FILE_PATH="coverage/fastApiOrders$pytest_for_test_user_auth_TestUserAuth_test_user_auth.coverage" NAME="pytest for test_user_auth.TestUserAuth.test_user_auth Coverage Results" MODIFIED="1708599744186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/users" />
+    <SUITE FILE_PATH="coverage/fastApiOrders$producer.coverage" NAME="producer Coverage Results" MODIFIED="1708951986603" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kafka_layer" />
     <SUITE FILE_PATH="coverage/fastApiOrders$pytest_for_test_register_TestUserRegister_test_register.coverage" NAME="pytest for test_register.TestUserRegister.test_register Coverage Results" MODIFIED="1708597385797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/users" />
-    <SUITE FILE_PATH="coverage/fastApiOrders$fastApiOrders.coverage" NAME="fastApiOrders Coverage Results" MODIFIED="1708945637566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/fastApiOrders$fastApiOrders.coverage" NAME="fastApiOrders Coverage Results" MODIFIED="1708946213998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/fastApiOrders$consumer__1_.coverage" NAME="consumer (1) Coverage Results" MODIFIED="1707899749408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kafka_layer" />
     <SUITE FILE_PATH="coverage/fastApiOrders$measure_sync_time__1_.coverage" NAME="measure_sync_time (1) Coverage Results" MODIFIED="1707916701345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/test_real_db" />
     <SUITE FILE_PATH="coverage/fastApiOrders$measure_async_time.coverage" NAME="measure_async_time Coverage Results" MODIFIED="1707987313188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/test_real_db" />
     <SUITE FILE_PATH="coverage/fastApiOrders$create_db.coverage" NAME="create_db Coverage Results" MODIFIED="1707994481299" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/database/database_utils" />
     <SUITE FILE_PATH="coverage/fastApiOrders$.coverage" NAME=" Coverage Results" MODIFIED="1708579398117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/users" />
+    <SUITE FILE_PATH="coverage/fastApiOrders$pytest_for_test_kafka_status_change_TestKafkaLayer.coverage" NAME="pytest for test_kafka_status_change.TestKafkaLayer Coverage Results" MODIFIED="1709012853815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/integrations" />
     <SUITE FILE_PATH="coverage/fastApiOrders$pytest_for_test_item_TestItem.coverage" NAME="pytest for test_item.TestItem Coverage Results" MODIFIED="1708941116636" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/items" />
     <SUITE FILE_PATH="coverage/fastApiOrders$db_settings.coverage" NAME="db_settings Coverage Results" MODIFIED="1708496899582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/settings" />
     <SUITE FILE_PATH="coverage/fastApiOrders$pytest_for_test_register_TestUserRegister.coverage" NAME="pytest for test_register.TestUserRegister Coverage Results" MODIFIED="1708590998522" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/users" />
