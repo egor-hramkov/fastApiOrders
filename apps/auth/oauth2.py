@@ -10,7 +10,7 @@ from apps.user.repository import UserRepository
 from apps.user.schemas import UserOutModel
 from settings.auth_settings import ACCESS_TOKEN_EXPIRE_MINUTES, ALGORITHM, SECRET_KEY
 
-oauth2_schema = OAuth2PasswordBearer(tokenUrl='token')
+oauth2_schema = OAuth2PasswordBearer(tokenUrl='auth/token')
 
 
 class OAuth2:
