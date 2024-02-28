@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="515b7096-2419-4f30-a1c2-7ebdc3e999c5" name="Changes" comment="Реализация сервиса по рассылке уведомлений по почте email">
+    <list default="true" id="515b7096-2419-4f30-a1c2-7ebdc3e999c5" name="Changes" comment="лишний импорт">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,12 +242,12 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.producer" />
       <item itemvalue="FastAPI.fastApiOrders" />
-      <item itemvalue="Python tests.pytest for test_get_order.TestGetOrder" />
-      <item itemvalue="Python tests.pytest for test_get_order.TestGetOrder.test_get_order" />
+      <item itemvalue="Python.producer" />
       <item itemvalue="Python tests.pytest for test_kafka_status_change.TestKafkaLayer" />
       <item itemvalue="Python tests.pytest for tests.integrations.test_kafka_status_change.TestKafkaLayer" />
+      <item itemvalue="Python tests.pytest for test_get_order.TestGetOrder" />
+      <item itemvalue="Python tests.pytest for test_get_order.TestGetOrder.test_get_order" />
     </list>
     <recent_temporary>
       <list>
@@ -291,14 +292,7 @@
       <workItem from="1708578952944" duration="21540000" />
       <workItem from="1708925090313" duration="18364000" />
       <workItem from="1709010916563" duration="5602000" />
-    </task>
-    <task id="LOCAL-00023" summary="Написание ридми">
-      <option name="closed" value="true" />
-      <created>1707897626140</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1707897626140</updated>
+      <workItem from="1709099046001" duration="357000" />
     </task>
     <task id="LOCAL-00024" summary="Подключение кафки">
       <option name="closed" value="true" />
@@ -684,7 +678,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709040896232</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="лишний импорт">
+      <option name="closed" value="true" />
+      <created>1709099136215</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1709099136215</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -708,7 +710,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавление кастомных ошибок в репозиторий Заказов" />
     <MESSAGE value="Реализация обновления заказа, вынесение общего кода по фунцкиям, написание метакласса для енама" />
     <MESSAGE value="Код ревью правка багов" />
     <MESSAGE value="настроено изменение статуса заказа через брокеры кафка" />
@@ -733,7 +734,8 @@
     <MESSAGE value="фикстура для заказов" />
     <MESSAGE value="pytest-mock в зависимости" />
     <MESSAGE value="Реализация сервиса по рассылке уведомлений по почте email" />
-    <option name="LAST_COMMIT_MESSAGE" value="Реализация сервиса по рассылке уведомлений по почте email" />
+    <MESSAGE value="лишний импорт" />
+    <option name="LAST_COMMIT_MESSAGE" value="лишний импорт" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
