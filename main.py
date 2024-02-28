@@ -8,6 +8,8 @@ from apps.orders import routes as order_routes
 from apps.notifications import routes as notifications_routes
 import concurrent.futures as pool
 
+from redis_layer.redis_client import init_redis_pool, test
+
 app = FastAPI()
 
 app.include_router(user_routes.router)
@@ -26,3 +28,9 @@ async def startup_event():
         executor.submit(run_consumer)
     except NoBrokersAvailable:
         pass
+
+
+@app.on_event("startup")
+async def init_redis():
+    await init_redis_pool()
+    await test()
