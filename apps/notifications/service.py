@@ -1,4 +1,4 @@
-from fastapi import APIRouter, BackgroundTasks
+from fastapi import BackgroundTasks
 from fastapi_mail import MessageSchema, FastMail, ConnectionConfig
 
 from apps.notifications.schemas import EmailSchema
