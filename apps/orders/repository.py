@@ -15,6 +15,7 @@ from apps.orders.schemas import OrderSchema, OrderIn, OrderUpdateSchema
 from apps.user.repository import UserRepository
 from apps.utils.exception_parser import ExceptionParser
 from database.sql_alchemy import async_session
+from redis_layer.redis_client import RedisClient
 
 
 class OrderRepository:
@@ -93,8 +94,11 @@ class OrderRepository:
         if new_status not in OrderStatusEnum:
             raise StatusDoesNotExistsException()
         order = await self.get_raw_order(order_id)
+        old_status = order.status
         order.status = new_status
         await self.__save_order(order)
+        if old_status != new_status:
+            await RedisClient.create_notification_changed_order_status(order, old_status)
 
     async def __build_order(self, order: Order, items: list[ItemSchema] = None) -> OrderSchema:
         """Собирает информацию о заказе"""

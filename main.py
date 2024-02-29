@@ -8,7 +8,7 @@ from apps.orders import routes as order_routes
 from apps.notifications import routes as notifications_routes
 import concurrent.futures as pool
 
-from redis_layer.redis_client import init_redis_pool, test
+from redis_layer.redis_client import RedisClient
 
 app = FastAPI()
 
@@ -32,5 +32,4 @@ async def startup_event():
 
 @app.on_event("startup")
 async def init_redis():
-    await init_redis_pool()
-    await test()
+    await RedisClient.init_redis_pool()
