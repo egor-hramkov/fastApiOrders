@@ -31,6 +31,25 @@ services:
         start_period: 10s
       restart: unless-stopped
 
+    pgadmin:
+      container_name: pgadmin_container
+      image: dpage/pgadmin4:7.2
+      environment:
+        PGADMIN_DEFAULT_EMAIL: "habrpguser@habr.com"
+        PGADMIN_DEFAULT_PASSWORD: "python"
+        PGADMIN_CONFIG_SERVER_MODE: "False"
+        PGADMIN_LISTEN_PORT: 5050
+      volumes:
+        - pgadmin-data:/var/lib/pgadmin
+      ports:
+        - "5050:5050"
+      restart: unless-stopped
+      deploy:
+        resources:
+          limits:
+            cpus: '0.5'
+            memory: 1G
+
     zookeeper-server:
         image: 'bitnami/zookeeper:latest'
         ports:
@@ -77,3 +96,4 @@ services:
 
 volumes:
   data:
+  pgadmin-data:
