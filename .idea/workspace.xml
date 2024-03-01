@@ -4,22 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="515b7096-2419-4f30-a1c2-7ebdc3e999c5" name="Changes" comment="Настроен роут для SSE потока уведомлений. Реализовано создание уведомлений, запись в Redis. Реализация кастомного редис клиента. При изменении статуса заказа автоматически создаётся уведомление.">
-      <change afterPath="$PROJECT_DIR$/apps/notifications/enums/notification_messages_enum.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/notifications/enums/notification_subjects_enum.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/orders/enums/__init__.py" afterDir="false" />
+    <list default="true" id="515b7096-2419-4f30-a1c2-7ebdc3e999c5" name="Changes" comment="Завершение логики с отправкой уведомлений на почту, вынесение общих уведомлений по енамам, изменение репозиториев заказа и их сущностей">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/notifications/enums/notification_types_enum.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/notifications/enums/notification_types_enum.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/notifications/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/notifications/schemas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/notifications/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/notifications/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/orders/enums.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/enums/order_statuses_enum.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/orders/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/orders/repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/repository.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/orders/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/schemas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/orders/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kafka_layer/consumer/consumer_listener.py" beforeDir="false" afterPath="$PROJECT_DIR$/kafka_layer/consumer/consumer_listener.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kafka_layer/producer/producer_pusher.py" beforeDir="false" afterPath="$PROJECT_DIR$/kafka_layer/producer/producer_pusher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redis_layer/redis_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/redis_layer/redis_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -311,15 +298,7 @@
       <workItem from="1709010916563" duration="5602000" />
       <workItem from="1709099046001" duration="25687000" />
       <workItem from="1709184478374" duration="23356000" />
-      <workItem from="1709273301951" duration="2645000" />
-    </task>
-    <task id="LOCAL-00028" summary="Переписывание хеширования пароля на асинхронность, добавление aiobcrypt">
-      <option name="closed" value="true" />
-      <created>1707987407148</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1707987407148</updated>
+      <workItem from="1709273301951" duration="3525000" />
     </task>
     <task id="LOCAL-00029" summary="Переписывание всех запросов к бд на асинхронность">
       <option name="closed" value="true" />
@@ -705,7 +684,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709187810735</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Завершение логики с отправкой уведомлений на почту, вынесение общих уведомлений по енамам, изменение репозиториев заказа и их сущностей">
+      <option name="closed" value="true" />
+      <created>1709276277156</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1709276277157</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -729,7 +716,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Изменение параметров на переменные среды" />
     <MESSAGE value="Реализация переменных среды для тестов, скрипт по созданию тестовой БД." />
     <MESSAGE value="Реализована фикстура применения миграций на тестовую БД при запуске pytest" />
     <MESSAGE value="return type" />
@@ -754,7 +740,8 @@
     <MESSAGE value="Изменение урла авторизации" />
     <MESSAGE value="внедрение Redis в проект" />
     <MESSAGE value="Настроен роут для SSE потока уведомлений. Реализовано создание уведомлений, запись в Redis. Реализация кастомного редис клиента. При изменении статуса заказа автоматически создаётся уведомление." />
-    <option name="LAST_COMMIT_MESSAGE" value="Настроен роут для SSE потока уведомлений. Реализовано создание уведомлений, запись в Redis. Реализация кастомного редис клиента. При изменении статуса заказа автоматически создаётся уведомление." />
+    <MESSAGE value="Завершение логики с отправкой уведомлений на почту, вынесение общих уведомлений по енамам, изменение репозиториев заказа и их сущностей" />
+    <option name="LAST_COMMIT_MESSAGE" value="Завершение логики с отправкой уведомлений на почту, вынесение общих уведомлений по енамам, изменение репозиториев заказа и их сущностей" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/fastApiOrders$pytest_for_test_item_TestItem_test_get_item.coverage" NAME="pytest for test_item.TestItem.test_get_item Coverage Results" MODIFIED="1708941089837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/items" />
