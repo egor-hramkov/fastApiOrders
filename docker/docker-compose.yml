@@ -1,6 +1,27 @@
 version: '3.10'
 services:
 
+    app:
+      build:
+        context: ../
+        dockerfile: ./docker/server/Dockerfile
+      ports:
+        - '8000:80'
+      working_dir: /app
+
+    postgres:
+      image: postgres:13.3
+      environment:
+        POSTGRES_MULTIPLE_DATABASES: sqlalchemy_fastapi,test_sqlalchemy_fastapi
+        POSTGRES_USER: "postgres"
+        POSTGRES_PASSWORD: "python"
+        PGDATA: "/var/lib/postgresql/data/pgdata"
+      volumes:
+        - ./docker-postgresql-multiple-databases:/docker-entrypoint-initdb.d
+        - data:/var/lib/postgresql/data
+      ports:
+        - "5432:5432"
+
     zookeeper-server:
         image: 'bitnami/zookeeper:latest'
         ports:
@@ -44,3 +65,6 @@ services:
 #        links:
 #          - kafka_layer
 #          - zookeeper-server
+
+volumes:
+  data:
