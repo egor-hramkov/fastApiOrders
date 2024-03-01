@@ -2,7 +2,10 @@ from pydantic import BaseModel, Field, EmailStr
 
 from apps.notifications.abstract import AbstractNotification
 from apps.notifications.enums.notification_events_enum import NotificationEventsEnum
+from apps.notifications.enums.notification_messages_enum import NotificationMessagesEnum
+from apps.notifications.enums.notification_subjects_enum import NotificationSubjectsEnum
 from apps.notifications.enums.notification_types_enum import NotificationTypesEnum
+from apps.orders.schemas import OrderSchema
 
 
 class EmailSchema(BaseModel):
@@ -10,6 +13,17 @@ class EmailSchema(BaseModel):
     recipients: list[EmailStr] = Field(default_factory=list)
     subject: str
     message: str
+
+    @staticmethod
+    def build_email_order_status_changed(order: OrderSchema):
+        """Собирает емаил сообщение об изменении статуса заказа"""
+        return EmailSchema(
+            recipients=[order.user.email],
+            subject=NotificationSubjectsEnum.order_status_changed.value,
+            message=NotificationMessagesEnum.order_status_changed.value.format(
+                order_id=order.id, old_status=order.old_status.value, new_status=order.status.value
+            )
+        )
 
 
 class NotificationOrderStatusSchema(AbstractNotification):

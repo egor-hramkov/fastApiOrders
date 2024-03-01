@@ -3,7 +3,7 @@ from sqlalchemy.orm import Mapped, relationship
 from sqlalchemy.orm import mapped_column
 
 from apps.items.models import Item
-from apps.orders.enums import OrderStatusEnum
+from apps.orders.enums.order_statuses_enum import OrderStatusEnum
 from apps.user.models import User
 from database.base_models import Base
 

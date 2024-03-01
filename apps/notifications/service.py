@@ -17,17 +17,20 @@ class EmailNotificationService:
         MAIL_SSL_TLS=True,
     )
 
-    async def write_notification(self, email: EmailSchema):
+    @classmethod
+    async def __task_send_message(cls, email: EmailSchema):
         message = MessageSchema(
             subject=email.subject,
             recipients=email.recipients,
             body=email.message,
             subtype="plain"
         )
-
-        fm = FastMail(self.conf)
+        fm = FastMail(cls.conf)
         await fm.send_message(message)
-        print(message)
 
-    async def send_notification(self, email: EmailSchema, background_tasks: BackgroundTasks) -> None:
-        background_tasks.add_task(self.write_notification, email)
+    @classmethod
+    async def send_notification(cls, email: EmailSchema, background_tasks: BackgroundTasks = None) -> None:
+        if background_tasks:
+            background_tasks.add_task(cls.__task_send_message, email)
+        else:
+            await cls.__task_send_message(email)

@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from apps.items.repository import ItemRepository
 from apps.items.schemas import ItemSchema
-from apps.orders.enums import OrderStatusEnum
+from apps.orders.enums.order_statuses_enum import OrderStatusEnum
 from apps.orders.exceptions import (
     OrderAlreadyExistsException,
     OrderDoesNotExistsException,
@@ -15,7 +15,6 @@ from apps.orders.schemas import OrderSchema, OrderIn, OrderUpdateSchema
 from apps.user.repository import UserRepository
 from apps.utils.exception_parser import ExceptionParser
 from database.sql_alchemy import async_session
-from redis_layer.redis_client import RedisClient
 
 
 class OrderRepository:
@@ -59,6 +58,7 @@ class OrderRepository:
     async def update(self, order_id: int, order_data: OrderUpdateSchema) -> OrderSchema:
         """Обновление заказа"""
         order = await self.get_raw_order(order_id)
+        old_status = order.status
         await self.update_order_status(order_id, order_data.status)
         await self.__save_order(order)
 
@@ -71,7 +71,7 @@ class OrderRepository:
         items_ids_to_delete = old_order_items_ids - new_order_items_ids
         await self.add_items_in_order(order.id, items_ids_to_add)
         await self.remove_items_in_order(order.id, items_ids_to_delete)
-        return await self.__build_order(order, new_order_items)
+        return await self.__build_order(order, new_order_items, old_status=old_status)
 
     async def add_items_in_order(self, order_id: int, items_ids: list | set) -> None:
         """Добавляет товары в заказ"""
@@ -89,7 +89,7 @@ class OrderRepository:
             await db.execute(statement)
             await db.commit()
 
-    async def update_order_status(self, order_id: int, new_status: str) -> None:
+    async def update_order_status(self, order_id: int, new_status: str) -> OrderSchema:
         """Обновляет статус заказа"""
         if new_status not in OrderStatusEnum:
             raise StatusDoesNotExistsException()
@@ -97,15 +97,19 @@ class OrderRepository:
         old_status = order.status
         order.status = new_status
         await self.__save_order(order)
-        if old_status != new_status:
-            await RedisClient.create_notification_changed_order_status(order, old_status)
+        return await self.__build_order(order, old_status=old_status)
 
-    async def __build_order(self, order: Order, items: list[ItemSchema] = None) -> OrderSchema:
+    async def __build_order(
+            self,
+            order: Order,
+            items: list[ItemSchema] = None,
+            old_status: OrderStatusEnum = None
+    ) -> OrderSchema:
         """Собирает информацию о заказе"""
         user = await self._user_repository.get_user(order.user_id)
         if items is None:
             items = await self.__get_order_items(order.id)
-        order_data = await OrderSchema.build_order_schema(order, user, items)
+        order_data = await OrderSchema.build_order_schema(order, user, items, old_status=old_status)
         return order_data
 
     async def __build_items_links_to_order(self, items: list[ItemSchema], order_id: int) -> list[OrderItem]:

@@ -1,4 +1,6 @@
 import asyncio
+import traceback
+
 from kafka.errors import kafka_errors
 
 from apps.orders.service import OrderService
@@ -16,6 +18,7 @@ async def listen():
             await order_service.update_order_status(order_data['order_id'], order_data['status'])
         except Exception as e:
             print(f"Что-то пошло не так при изменении статуса заказа: " + str(e))
+            print(traceback.format_exc())
         else:
             print(f"Статус заказа {order_data['order_id']} изменён на {order_data['status']}")
 

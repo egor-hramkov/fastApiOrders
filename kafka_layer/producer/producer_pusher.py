@@ -6,7 +6,7 @@ producer = kafka_producer
 
 def main():
     order = {
-        'order_id': 10,
+        'order_id': 12,
         'status': 'in_process'
     }
     producer.send(KAFKA_TOPIC, order)
