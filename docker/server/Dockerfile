@@ -8,6 +8,7 @@ RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 
 
 COPY . /app/
+COPY .env.docker .env
 RUN export PYTHONPATH=$PWD
 
 
