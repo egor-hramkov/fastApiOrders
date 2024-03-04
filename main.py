@@ -18,8 +18,8 @@ async def lifespan(app: FastAPI):
     try:
         from kafka_layer.consumer.consumer_listener import run_consumer
         executor.submit(run_consumer)
-    except NoBrokersAvailable:
-        pass
+    except NoBrokersAvailable as e:
+        print("No Brokers: ", e)
 
     await RedisClient.init_redis_pool()
     yield
