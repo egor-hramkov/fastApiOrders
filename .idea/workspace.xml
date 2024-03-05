@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="515b7096-2419-4f30-a1c2-7ebdc3e999c5" name="Changes" comment="Фикс кафка докер(Теперь принимает сообщения внутри контейнера)">
-      <change afterPath="$PROJECT_DIR$/kafka_layer/producer/prod_test_kafka.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kafka_layer/producer/producer_pusher.py" beforeDir="false" afterPath="$PROJECT_DIR$/kafka_layer/producer/producer_pusher.py" afterDir="false" />
-    </list>
+    <list default="true" id="515b7096-2419-4f30-a1c2-7ebdc3e999c5" name="Changes" comment="обновление ридми" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -311,23 +305,7 @@
       <workItem from="1709290404233" duration="8225000" />
       <workItem from="1709530345161" duration="208000" />
       <workItem from="1709530572513" duration="24486000" />
-      <workItem from="1709634999704" duration="2629000" />
-    </task>
-    <task id="LOCAL-00036" summary="Доработан парсер ошибок, написан кастомный маппер из любой модели Pydentic в модель SQLalchemy">
-      <option name="closed" value="true" />
-      <created>1708077861644</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1708077861644</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Fix metadata">
-      <option name="closed" value="true" />
-      <created>1708077874707</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1708077874707</updated>
+      <workItem from="1709634999704" duration="3437000" />
     </task>
     <task id="LOCAL-00038" summary="Переработка запросов из users, реализация приложения товаров, реализация приложения заказов">
       <option name="closed" value="true" />
@@ -705,7 +683,23 @@
       <option name="project" value="LOCAL" />
       <updated>1709556311790</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="Фикс кафка докер(Теперь принимает сообщения ИЗВНЕ контейнера)">
+      <option name="closed" value="true" />
+      <created>1709637699863</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1709637699863</updated>
+    </task>
+    <task id="LOCAL-00086" summary="обновление ридми">
+      <option name="closed" value="true" />
+      <created>1709638369870</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1709638369870</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -730,8 +724,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Решение проблемы с множественными запросами к БД, добавление ошибки когда пользователь не найден" />
-    <MESSAGE value="Написание тестов на АПИ пользователя" />
     <MESSAGE value="Правка статуса заказа в docs" />
     <MESSAGE value="Написаны тесты для приложения items" />
     <MESSAGE value="Изменение типизации и возвращаемых моделей пользователя" />
@@ -755,7 +747,9 @@
     <MESSAGE value="Разворачивание PgAdmin в докере" />
     <MESSAGE value="добавлен отдельный энв для докера" />
     <MESSAGE value="Фикс кафка докер(Теперь принимает сообщения внутри контейнера)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Фикс кафка докер(Теперь принимает сообщения внутри контейнера)" />
+    <MESSAGE value="Фикс кафка докер(Теперь принимает сообщения ИЗВНЕ контейнера)" />
+    <MESSAGE value="обновление ридми" />
+    <option name="LAST_COMMIT_MESSAGE" value="обновление ридми" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
