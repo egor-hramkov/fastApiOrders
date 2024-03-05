@@ -6,8 +6,8 @@ producer = kafka_producer
 
 def main():
     order = {
-        'order_id': 12,
-        'status': 'in_process'
+        'order_id': 2,
+        'status': 'created'
     }
     producer.send(KAFKA_TOPIC, order)
     producer.flush()
