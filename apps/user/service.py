@@ -1,3 +1,5 @@
+from apps.user.filters.user_filter import UserFilter
+from apps.user.filters.users_filter import AllUserFilter
 from apps.user.models import User
 from apps.user.repository import UserRepository
 from apps.user.schemas import UserCreateModel, UserUpdateModel, UserOutModel
@@ -9,12 +11,16 @@ class UserService:
     def __init__(self):
         self.repository = UserRepository()
 
-    async def get_all_users(self) -> list[User]:
-        all_users = await self.repository.get_all_users()
+    async def get_all_users(self, get_all_users: AllUserFilter) -> list[User]:
+        all_users = await self.repository.get_all_users(get_all_users)
         return all_users
 
     async def get_user(self, user_id: int = None, email: str = None, username: str = None) -> UserOutModel:
         user = await self.repository.get_user(user_id, email, username)
+        return user
+
+    async def get_user_with_filter(self, user_filter: UserFilter) -> UserOutModel:
+        user = await self.repository.get_user_with_filter(user_filter)
         return user
 
     async def create_user(self, user_data: UserCreateModel) -> User:

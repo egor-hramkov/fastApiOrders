@@ -2,6 +2,8 @@ from sqlalchemy.exc import IntegrityError
 
 from apps.auth.hash_password import HashPassword
 from apps.user.exceptions import UserAlreadyExistsException, UserDoesNotExistsException
+from apps.user.filters.user_filter import UserFilter
+from apps.user.filters.users_filter import AllUserFilter
 from apps.user.models import User
 from apps.user.schemas import UserCreateModel, UserUpdateModel, UserOutModel
 from apps.utils.exception_parser import ExceptionParser
@@ -16,10 +18,12 @@ class UserRepository:
     """Репозиторий для работы с пользователем"""
     session: AsyncSession = async_session
 
-    async def get_all_users(self) -> list[User]:
+    async def get_all_users(self, all_user_filter: AllUserFilter) -> list[User]:
         """Получение всех пользователей"""
         async with self.session() as db:
-            result = await db.execute(select(User))
+            statement = select(User)
+            statement = all_user_filter.filter(statement)
+            result = await db.execute(statement)
             return result.scalars()
 
     async def get_raw_user(self, user_id: int = None, email: str = None, username: str = None) -> User:
@@ -40,6 +44,17 @@ class UserRepository:
         """Получение пользователя"""
         user = await self.get_raw_user(user_id, email, username)
         return UserOutModel.model_validate(user, from_attributes=True)
+
+    async def get_user_with_filter(self, user_filter: UserFilter) -> UserOutModel:
+        """Получение пользователя по фильтрам"""
+        async with self.session() as db:
+            statement = select(User)
+            statement = user_filter.filter(statement)
+            result = await db.execute(statement)
+            user = result.scalars().first()
+            if user is None:
+                raise UserDoesNotExistsException()
+            return UserOutModel.model_validate(user, from_attributes=True)
 
     async def create(self, user_data: UserCreateModel) -> User:
         """Создание пользователя"""
