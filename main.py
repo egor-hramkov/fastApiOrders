@@ -3,6 +3,7 @@ import logging
 
 from fastapi import FastAPI
 from kafka.errors import NoBrokersAvailable
+from prometheus_fastapi_instrumentator import Instrumentator
 
 from apps.user import routes as user_routes
 from apps.auth import routes as auth_routes
@@ -44,3 +45,4 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
+Instrumentator().instrument(app).expose(app)

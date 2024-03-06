@@ -22,6 +22,10 @@ python tests/create_test_db.py
 
 Kafka-Ui запускается на localhost:8090
 
+Prometheus запускается на localhost:9090
+
+Grafana запускается на localhost:3000
+
 # Полезные команды
 
 * Создание миграций - alembic revision -m "название" --autogenerate
