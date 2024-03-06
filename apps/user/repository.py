@@ -18,11 +18,17 @@ class UserRepository:
     """Репозиторий для работы с пользователем"""
     session: AsyncSession = async_session
 
-    async def get_all_users(self, all_user_filter: AllUserFilter) -> list[User]:
+    async def get_all_users(
+            self,
+            all_user_filter: AllUserFilter,
+            skip: int = 0,
+            limit: int = 0
+    ) -> list[User]:
         """Получение всех пользователей"""
         async with self.session() as db:
-            statement = select(User)
-            statement = all_user_filter.filter(statement)
+            statement = all_user_filter.filter(select(User)).offset(skip)
+            if limit != 0:
+                statement = statement.limit(limit)
             result = await db.execute(statement)
             return result.scalars()
 

@@ -11,8 +11,8 @@ class UserService:
     def __init__(self):
         self.repository = UserRepository()
 
-    async def get_all_users(self, get_all_users: AllUserFilter) -> list[User]:
-        all_users = await self.repository.get_all_users(get_all_users)
+    async def get_all_users(self, get_all_users: AllUserFilter, skip: int = 0, limit: int = 0) -> list[User]:
+        all_users = await self.repository.get_all_users(get_all_users, skip, limit)
         return all_users
 
     async def get_user(self, user_id: int = None, email: str = None, username: str = None) -> UserOutModel:

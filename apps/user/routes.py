@@ -20,9 +20,9 @@ service = UserService()
 async def get_all_users(
         all_user_filter=FilterDepends(AllUserFilter),
         skip: int = Query(ge=0, default=0),
-        offset: int = Query(ge=0, default=0)
+        limit: int = Query(ge=0, default=0)
 ) -> Any:
-    all_users = await service.get_all_users(all_user_filter)
+    all_users = await service.get_all_users(all_user_filter, skip, limit)
     return all_users
 
 
