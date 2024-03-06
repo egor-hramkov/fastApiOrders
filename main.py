@@ -20,12 +20,19 @@ logging.basicConfig(
 )
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     disable_3rd_party_logging()
+
+    app.include_router(user_routes.router)
+    app.include_router(auth_routes.router)
+    app.include_router(item_routes.router)
+    app.include_router(order_routes.router)
+    app.include_router(notifications_routes.router)
+
+    executor = pool.ThreadPoolExecutor(max_workers=1)
     try:
         from kafka_layer.consumer.consumer_listener import run_consumer
         executor.submit(run_consumer)
@@ -37,11 +44,3 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
-
-app.include_router(user_routes.router)
-app.include_router(auth_routes.router)
-app.include_router(item_routes.router)
-app.include_router(order_routes.router)
-app.include_router(notifications_routes.router)
-
-executor = pool.ThreadPoolExecutor(max_workers=1)
