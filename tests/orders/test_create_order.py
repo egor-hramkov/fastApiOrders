@@ -30,7 +30,6 @@ class TestCreateOrder:
             json=self.order_data,
             headers={"Authorization": f"Bearer {access_token}"}
         )
-        print(response.json())
         assert response.status_code == HTTP_200_OK
         order_id = response.json()['id']
         order_status = response.json()['status']

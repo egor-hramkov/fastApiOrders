@@ -13,7 +13,6 @@ class TestUserGetting:
     def test_get_user(self, client, create_user):
         """Тест получения пользователя"""
         user: TestUser = create_user
-        print(f"USER: {user}")
         response = client.get(self.GET_USER_URL + str(user.id))
         response_user = response.json()
         assert response.status_code == HTTP_200_OK
